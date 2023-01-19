@@ -13,12 +13,22 @@ let pomWinner = false
 
 let pointsX =  JSON.parse(localStorage.getItem("playerX"))
 playerX.textContent = ""
-playerX.append(pointsX)
+
+if(pointsX === null) {
+    playerX.append("0")
+} else {
+    playerX.append(pointsX)
+}
+
 
 let pointsO =  JSON.parse(localStorage.getItem("playerO"))
 playerO.textContent = ""
-playerO.append(pointsO)
 
+if(pointsO === null) {
+playerO.append("0")
+} else {
+    playerO.append(pointsO)
+}
 
 drawMoveTitle(flag)
 
