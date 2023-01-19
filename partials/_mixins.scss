@@ -1,0 +1,9 @@
+@mixin even-boxes {
+    height: $box-height;
+    background-color: $color-even;
+}
+
+@mixin odd-boxes {
+    height: $box-height;
+    background-color: $color-odd;
+}
