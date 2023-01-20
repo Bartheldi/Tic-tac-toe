@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,38 +8,41 @@
     <link rel="stylesheet" href="style.css">
     <title>Tic-tac-toe</title>
 </head>
+
 <body>
-    
+
     <div id="container-game">
 
-     
+
         <div id="main-title">
             <h1>Tic-tac-toe</h1>
-        <p>Whoever makes an unbroken line of five of their marks wins</p>
+            <p>Whoever makes an unbroken line of five of their marks wins</p>
         </div>
-            
-            
+
+
         <div id="heading">
 
-        <div id="player-move">
-            <div id="player-move-text">
-                <h2>On the move:</h2>
+            <div id="player-move">
+                <div id="player-move-text">
+                    <h2>On the move:</h2>
+                </div>
+                <div id="player-move-variable">
+                    <h2 class="onMove"></h2>
+                </div>
             </div>
-            <div id="player-move-variable">
-                <h2 class="onMove"></h2>
-            </div>
-        </div>
 
-        <div id="player-score">
-            <div id="player-X-text">
-                <h2>Player X score:&nbsp;</h2> <h2 class="scoreX">0</h2>
+            <div id="player-score">
+                <div id="player-X-text">
+                    <h2>Player X score:&nbsp;</h2>
+                    <h2 class="scoreX">0</h2>
+                </div>
+                <div id="player-O-text">
+                    <h2>Player O score:&nbsp;</h2>
+                    <h2 class="scoreO">0</h2>
+                </div>
             </div>
-            <div id="player-O-text">
-                <h2>Player O score:&nbsp;</h2> <h2 class="scoreO">0</h2>
-            </div>
-        </div>
-        
-            
+
+
         </div>
 
 
@@ -51,7 +55,7 @@
                 <div id="column1-box3"></div>
                 <div id="column1-box4"></div>
                 <div id="column1-box5"></div>
-                <div id="column1-box6"></div> 
+                <div id="column1-box6"></div>
             </div>
 
             <div id="column2">
@@ -60,7 +64,7 @@
                 <div id="column2-box3"></div>
                 <div id="column2-box4"></div>
                 <div id="column2-box5"></div>
-                <div id="column2-box6"></div> 
+                <div id="column2-box6"></div>
             </div>
 
             <div id="column3">
@@ -69,7 +73,7 @@
                 <div id="column3-box3"></div>
                 <div id="column3-box4"></div>
                 <div id="column3-box5"></div>
-                <div id="column3-box6"></div> 
+                <div id="column3-box6"></div>
             </div>
 
             <div id="column4">
@@ -78,7 +82,7 @@
                 <div id="column4-box3"></div>
                 <div id="column4-box4"></div>
                 <div id="column4-box5"></div>
-                <div id="column4-box6"></div> 
+                <div id="column4-box6"></div>
             </div>
 
             <div id="column5">
@@ -87,7 +91,7 @@
                 <div id="column5-box3"></div>
                 <div id="column5-box4"></div>
                 <div id="column5-box5"></div>
-                <div id="column5-box6"></div> 
+                <div id="column5-box6"></div>
             </div>
 
             <div id="column6">
@@ -96,29 +100,30 @@
                 <div id="column6-box3"></div>
                 <div id="column6-box4"></div>
                 <div id="column6-box5"></div>
-                <div id="column6-box6"></div> 
+                <div id="column6-box6"></div>
             </div>
 
 
 
         </div>
-   
-      <div class="buttons">
-    
 
-        <div id="resetCalc">
-            <button class="btn-resetCalc">Reset score</button>
+        <div class="buttons">
+
+
+            <div id="resetCalc">
+                <button class="btn-resetCalc">Reset score</button>
+            </div>
+
+            <div id="newGame">
+                <button class="btn-newGame">New game</button>
+            </div>
+
         </div>
 
-        <div id="newGame">
-            <button class="btn-newGame">New game</button>
-        </div>
 
-    </div>
 
-    
-
-    <script src="functions.js"></script>
-    <script src="script.js"></script>
+        <script src="functions.js"></script>
+        <script src="script.js"></script>
 </body>
+
 </html>

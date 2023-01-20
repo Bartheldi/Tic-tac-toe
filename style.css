@@ -88,7 +88,12 @@
   border-radius: 8px;
 }
 
-#dashboard #column1, #column2, #column3, #column4, #column5, #column6 {
+#dashboard #column1,
+#column2,
+#column3,
+#column4,
+#column5,
+#column6 {
   width: 100px;
   height: 600px;
 }
@@ -371,7 +376,8 @@
   justify-content: center;
 }
 
-#newGame .btn-newGame, .btn-resetCalc {
+#newGame .btn-newGame,
+.btn-resetCalc {
   height: 60px;
   width: 160px;
   font-size: 18px;
@@ -385,10 +391,13 @@
   cursor: pointer;
 }
 
-#newGame .btn-newGame:hover, .btn-resetCalc:hover {
+#newGame .btn-newGame:hover,
+.btn-resetCalc:hover {
   background-color: rgb(193, 238, 193);
   width: 200px;
   font-size: 22px;
   transition: font-size 0.3s ease-in-out;
   transition: width 0.3s ease-in-out;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
