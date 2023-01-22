@@ -967,10 +967,10 @@
 
 
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 350px) {
 
     #main-title {
-        width: 340px;
+        width: 320px;
     }
 
     #main-title h1 {
@@ -995,9 +995,7 @@
 
     /* which player turn and score*/
     #heading {
-        width: 400px;
-        position: relative;
-        left: 2%;
+        width: 320px;
     }
 
 
@@ -1011,12 +1009,12 @@
 
     #heading #player-X-text {
         font-size: 10px;
-        padding-left: 60px;
+        padding-left: 45px;
     }
 
     #heading #player-O-text {
         font-size: 10px;
-        padding-left: 60px;
+        padding-left: 45px;
     }
 
     #dashboard {
@@ -1037,87 +1035,87 @@
     /* 1. column */
     #dashboard #column1 #column1-box1 {
 
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
 
     #dashboard #column1 #column1-box2 {
 
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column1 #column1-box3 {
 
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column1 #column1-box4 {
 
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column1 #column1-box5 {
 
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column1 #column1-box6 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
 
     /* 2. column */
 
     #dashboard #column2 #column2-box1 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column2 #column2-box2 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column2 #column2-box3 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column2 #column2-box4 {
 
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column2 #column2-box5 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column2 #column2-box6 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
 
     /* 3. column */
 
     #dashboard #column3 #column3-box1 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column3 #column3-box2 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column3 #column3-box3 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column3 #column3-box4 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column3 #column3-box5 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column3 #column3-box6 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
 
@@ -1129,27 +1127,27 @@
     /* 4. column */
 
     #dashboard #column4 #column4-box1 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column4 #column4-box2 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column4 #column4-box3 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column4 #column4-box4 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column4 #column4-box5 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column4 #column4-box6 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
 
@@ -1160,27 +1158,27 @@
     /* 5. column */
 
     #dashboard #column5 #column5-box1 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column5 #column5-box2 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column5 #column5-box3 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column5 #column5-box4 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column5 #column5-box5 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column5 #column5-box6 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
 
@@ -1192,27 +1190,27 @@
     /* 6. column */
 
     #dashboard #column6 #column6-box1 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column6 #column6-box2 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column6 #column6-box3 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column6 #column6-box4 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column6 #column6-box5 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
     #dashboard #column6 #column6-box6 {
-        height: $box-height-400;
+        height: $box-height-350;
     }
 
 

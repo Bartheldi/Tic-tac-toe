@@ -727,9 +727,9 @@
     width: 400px;
   }
 }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 350px) {
   #main-title {
-    width: 340px;
+    width: 320px;
   }
   #main-title h1 {
     font-size: 30px;
@@ -747,20 +747,18 @@
   }
   /* which player turn and score*/
   #heading {
-    width: 400px;
-    position: relative;
-    left: 2%;
+    width: 320px;
   }
   #heading #player-move-text {
     font-size: 10px;
   }
   #heading #player-X-text {
     font-size: 10px;
-    padding-left: 60px;
+    padding-left: 45px;
   }
   #heading #player-O-text {
     font-size: 10px;
-    padding-left: 60px;
+    padding-left: 45px;
   }
   #dashboard {
     width: 320px;

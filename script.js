@@ -2450,7 +2450,7 @@ newGame.addEventListener("click", function () {
 
     gameStatus.textContent = ""
     gameStatus.append("On the move:")
-    gameStatus.style.fontSize = "22px"
+    gameStatus.style.fontSize = "18px"
 
 
 
