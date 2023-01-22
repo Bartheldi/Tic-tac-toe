@@ -80,6 +80,8 @@
 
 /* Game desk */
 #dashboard {
+  width: 600px;
+  height: 600px;
   border: 1px solid black;
   display: flex;
   overflow: hidden;
@@ -95,7 +97,6 @@
 #column5,
 #column6 {
   width: 100px;
-  height: 600px;
 }
 
 /* Draw X or O */
@@ -400,4 +401,498 @@
   transition: width 0.3s ease-in-out;
 }
 
-/*# sourceMappingURL=style.css.map */
+@media only screen and (max-width: 600px) {
+  #main-title {
+    width: 400px;
+  }
+  #main-title h1 {
+    font-size: 35px;
+  }
+  #main-title p {
+    font-size: 12px;
+  }
+  /* which player turn and score*/
+  #heading {
+    width: 500px;
+  }
+  /* Draw X or O */
+  #dashboard p {
+    font-size: 40px;
+    font-weight: bold;
+    position: relative;
+    top: 22%;
+    right: -30%;
+  }
+  #heading #player-move-text {
+    font-size: 12px;
+  }
+  #heading #player-X-text {
+    font-size: 12px;
+    padding-left: 140px;
+  }
+  #heading #player-O-text {
+    font-size: 12px;
+    padding-left: 140px;
+  }
+  #dashboard {
+    width: 500px;
+    height: 500px;
+  }
+  #dashboard #column1,
+#column2,
+#column3,
+#column4,
+#column5,
+#column6 {
+    width: 80px;
+  }
+  /* 1. column */
+  #dashboard #column1 #column1-box1 {
+    height: 80px;
+  }
+  #dashboard #column1 #column1-box2 {
+    height: 80px;
+  }
+  #dashboard #column1 #column1-box3 {
+    height: 80px;
+  }
+  #dashboard #column1 #column1-box4 {
+    height: 80px;
+  }
+  #dashboard #column1 #column1-box5 {
+    height: 80px;
+  }
+  #dashboard #column1 #column1-box6 {
+    height: 80px;
+  }
+  /* 2. column */
+  #dashboard #column2 #column2-box1 {
+    height: 80px;
+  }
+  #dashboard #column2 #column2-box2 {
+    height: 80px;
+  }
+  #dashboard #column2 #column2-box3 {
+    height: 80px;
+  }
+  #dashboard #column2 #column2-box4 {
+    height: 80px;
+  }
+  #dashboard #column2 #column2-box5 {
+    height: 80px;
+  }
+  #dashboard #column2 #column2-box6 {
+    height: 80px;
+  }
+  /* 3. column */
+  #dashboard #column3 #column3-box1 {
+    height: 80px;
+  }
+  #dashboard #column3 #column3-box2 {
+    height: 80px;
+  }
+  #dashboard #column3 #column3-box3 {
+    height: 80px;
+  }
+  #dashboard #column3 #column3-box4 {
+    height: 80px;
+  }
+  #dashboard #column3 #column3-box5 {
+    height: 80px;
+  }
+  #dashboard #column3 #column3-box6 {
+    height: 80px;
+  }
+  /* 4. column */
+  #dashboard #column4 #column4-box1 {
+    height: 80px;
+  }
+  #dashboard #column4 #column4-box2 {
+    height: 80px;
+  }
+  #dashboard #column4 #column4-box3 {
+    height: 80px;
+  }
+  #dashboard #column4 #column4-box4 {
+    height: 80px;
+  }
+  #dashboard #column4 #column4-box5 {
+    height: 80px;
+  }
+  #dashboard #column4 #column4-box6 {
+    height: 80px;
+  }
+  /* 5. column */
+  #dashboard #column5 #column5-box1 {
+    height: 80px;
+  }
+  #dashboard #column5 #column5-box2 {
+    height: 80px;
+  }
+  #dashboard #column5 #column5-box3 {
+    height: 80px;
+  }
+  #dashboard #column5 #column5-box4 {
+    height: 80px;
+  }
+  #dashboard #column5 #column5-box5 {
+    height: 80px;
+  }
+  #dashboard #column5 #column5-box6 {
+    height: 80px;
+  }
+  /* 6. column */
+  #dashboard #column6 #column6-box1 {
+    height: 80px;
+  }
+  #dashboard #column6 #column6-box2 {
+    height: 80px;
+  }
+  #dashboard #column6 #column6-box3 {
+    height: 80px;
+  }
+  #dashboard #column6 #column6-box4 {
+    height: 80px;
+  }
+  #dashboard #column6 #column6-box5 {
+    height: 80px;
+  }
+  #dashboard #column6 #column6-box6 {
+    height: 80px;
+  }
+  .buttons {
+    width: 500px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  #main-title {
+    width: 400px;
+  }
+  #main-title h1 {
+    font-size: 35px;
+  }
+  #main-title p {
+    font-size: 12px;
+  }
+  /* Draw X or O */
+  #dashboard p {
+    font-size: 40px;
+    font-weight: bold;
+    position: relative;
+    top: 18%;
+    right: -25%;
+  }
+  /* which player turn and score*/
+  #heading {
+    width: 400px;
+  }
+  #heading #player-move-text {
+    font-size: 10px;
+  }
+  #heading #player-X-text {
+    font-size: 10px;
+    padding-left: 120px;
+  }
+  #heading #player-O-text {
+    font-size: 10px;
+    padding-left: 120px;
+  }
+  #dashboard {
+    width: 400px;
+    height: 400px;
+  }
+  #dashboard #column1,
+#column2,
+#column3,
+#column4,
+#column5,
+#column6 {
+    width: 66px;
+  }
+  /* 1. column */
+  #dashboard #column1 #column1-box1 {
+    height: 66px;
+  }
+  #dashboard #column1 #column1-box2 {
+    height: 66px;
+  }
+  #dashboard #column1 #column1-box3 {
+    height: 66px;
+  }
+  #dashboard #column1 #column1-box4 {
+    height: 66px;
+  }
+  #dashboard #column1 #column1-box5 {
+    height: 66px;
+  }
+  #dashboard #column1 #column1-box6 {
+    height: 66px;
+  }
+  /* 2. column */
+  #dashboard #column2 #column2-box1 {
+    height: 66px;
+  }
+  #dashboard #column2 #column2-box2 {
+    height: 66px;
+  }
+  #dashboard #column2 #column2-box3 {
+    height: 66px;
+  }
+  #dashboard #column2 #column2-box4 {
+    height: 66px;
+  }
+  #dashboard #column2 #column2-box5 {
+    height: 66px;
+  }
+  #dashboard #column2 #column2-box6 {
+    height: 66px;
+  }
+  /* 3. column */
+  #dashboard #column3 #column3-box1 {
+    height: 66px;
+  }
+  #dashboard #column3 #column3-box2 {
+    height: 66px;
+  }
+  #dashboard #column3 #column3-box3 {
+    height: 66px;
+  }
+  #dashboard #column3 #column3-box4 {
+    height: 66px;
+  }
+  #dashboard #column3 #column3-box5 {
+    height: 66px;
+  }
+  #dashboard #column3 #column3-box6 {
+    height: 66px;
+  }
+  /* 4. column */
+  #dashboard #column4 #column4-box1 {
+    height: 66px;
+  }
+  #dashboard #column4 #column4-box2 {
+    height: 66px;
+  }
+  #dashboard #column4 #column4-box3 {
+    height: 66px;
+  }
+  #dashboard #column4 #column4-box4 {
+    height: 66px;
+  }
+  #dashboard #column4 #column4-box5 {
+    height: 66px;
+  }
+  #dashboard #column4 #column4-box6 {
+    height: 66px;
+  }
+  /* 5. column */
+  #dashboard #column5 #column5-box1 {
+    height: 66px;
+  }
+  #dashboard #column5 #column5-box2 {
+    height: 66px;
+  }
+  #dashboard #column5 #column5-box3 {
+    height: 66px;
+  }
+  #dashboard #column5 #column5-box4 {
+    height: 66px;
+  }
+  #dashboard #column5 #column5-box5 {
+    height: 66px;
+  }
+  #dashboard #column5 #column5-box6 {
+    height: 66px;
+  }
+  /* 6. column */
+  #dashboard #column6 #column6-box1 {
+    height: 66px;
+  }
+  #dashboard #column6 #column6-box2 {
+    height: 66px;
+  }
+  #dashboard #column6 #column6-box3 {
+    height: 66px;
+  }
+  #dashboard #column6 #column6-box4 {
+    height: 66px;
+  }
+  #dashboard #column6 #column6-box5 {
+    height: 66px;
+  }
+  #dashboard #column6 #column6-box6 {
+    height: 66px;
+  }
+  .buttons {
+    width: 400px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  #main-title {
+    width: 340px;
+  }
+  #main-title h1 {
+    font-size: 30px;
+  }
+  #main-title p {
+    font-size: 12px;
+  }
+  /* Draw X or O */
+  #dashboard p {
+    font-size: 30px;
+    font-weight: bold;
+    position: relative;
+    top: 18%;
+    right: -25%;
+  }
+  /* which player turn and score*/
+  #heading {
+    width: 400px;
+    position: relative;
+    left: 2%;
+  }
+  #heading #player-move-text {
+    font-size: 10px;
+  }
+  #heading #player-X-text {
+    font-size: 10px;
+    padding-left: 60px;
+  }
+  #heading #player-O-text {
+    font-size: 10px;
+    padding-left: 60px;
+  }
+  #dashboard {
+    width: 320px;
+    height: 320px;
+  }
+  #dashboard #column1,
+#column2,
+#column3,
+#column4,
+#column5,
+#column6 {
+    width: 53px;
+  }
+  /* 1. column */
+  #dashboard #column1 #column1-box1 {
+    height: 53px;
+  }
+  #dashboard #column1 #column1-box2 {
+    height: 53px;
+  }
+  #dashboard #column1 #column1-box3 {
+    height: 53px;
+  }
+  #dashboard #column1 #column1-box4 {
+    height: 53px;
+  }
+  #dashboard #column1 #column1-box5 {
+    height: 53px;
+  }
+  #dashboard #column1 #column1-box6 {
+    height: 53px;
+  }
+  /* 2. column */
+  #dashboard #column2 #column2-box1 {
+    height: 53px;
+  }
+  #dashboard #column2 #column2-box2 {
+    height: 53px;
+  }
+  #dashboard #column2 #column2-box3 {
+    height: 53px;
+  }
+  #dashboard #column2 #column2-box4 {
+    height: 53px;
+  }
+  #dashboard #column2 #column2-box5 {
+    height: 53px;
+  }
+  #dashboard #column2 #column2-box6 {
+    height: 53px;
+  }
+  /* 3. column */
+  #dashboard #column3 #column3-box1 {
+    height: 53px;
+  }
+  #dashboard #column3 #column3-box2 {
+    height: 53px;
+  }
+  #dashboard #column3 #column3-box3 {
+    height: 53px;
+  }
+  #dashboard #column3 #column3-box4 {
+    height: 53px;
+  }
+  #dashboard #column3 #column3-box5 {
+    height: 53px;
+  }
+  #dashboard #column3 #column3-box6 {
+    height: 53px;
+  }
+  /* 4. column */
+  #dashboard #column4 #column4-box1 {
+    height: 53px;
+  }
+  #dashboard #column4 #column4-box2 {
+    height: 53px;
+  }
+  #dashboard #column4 #column4-box3 {
+    height: 53px;
+  }
+  #dashboard #column4 #column4-box4 {
+    height: 53px;
+  }
+  #dashboard #column4 #column4-box5 {
+    height: 53px;
+  }
+  #dashboard #column4 #column4-box6 {
+    height: 53px;
+  }
+  /* 5. column */
+  #dashboard #column5 #column5-box1 {
+    height: 53px;
+  }
+  #dashboard #column5 #column5-box2 {
+    height: 53px;
+  }
+  #dashboard #column5 #column5-box3 {
+    height: 53px;
+  }
+  #dashboard #column5 #column5-box4 {
+    height: 53px;
+  }
+  #dashboard #column5 #column5-box5 {
+    height: 53px;
+  }
+  #dashboard #column5 #column5-box6 {
+    height: 53px;
+  }
+  /* 6. column */
+  #dashboard #column6 #column6-box1 {
+    height: 53px;
+  }
+  #dashboard #column6 #column6-box2 {
+    height: 53px;
+  }
+  #dashboard #column6 #column6-box3 {
+    height: 53px;
+  }
+  #dashboard #column6 #column6-box4 {
+    height: 53px;
+  }
+  #dashboard #column6 #column6-box5 {
+    height: 53px;
+  }
+  #dashboard #column6 #column6-box6 {
+    height: 53px;
+  }
+  .buttons {
+    width: 320px;
+  }
+  #newGame .btn-newGame,
+.btn-resetCalc {
+    width: 140px;
+  }
+}/*# sourceMappingURL=style.css.map */
