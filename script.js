@@ -6,6 +6,7 @@ let playerX = document.querySelector("#player-score .scoreX")
 let playerO = document.querySelector("#player-score .scoreO")
 
 
+
 let tieArray = []
 let flag = 0 // 0 = X, 1 = O
 let winner = false
@@ -126,8 +127,6 @@ let col6Box3 = document.querySelector("#column6-box3")
 let col6Box4 = document.querySelector("#column6-box4")
 let col6Box5 = document.querySelector("#column6-box5")
 let col6Box6 = document.querySelector("#column6-box6")
-
-
 
 
 col1Box1.addEventListener("click", function (e) {
