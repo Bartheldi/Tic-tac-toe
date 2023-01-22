@@ -3,14 +3,15 @@
 let win = function (box1, box2, box3, box4, box5) {
 
     if (box1.getElementsByTagName(`p`)[0].textContent === "X" && box2.getElementsByTagName(`p`)[0].textContent === "X" && box3.getElementsByTagName(`p`)[0].textContent === "X" && box4.getElementsByTagName(`p`)[0].textContent === "X" && box5.getElementsByTagName(`p`)[0].textContent === "X") {
-
-        playerX_won(box1, box2, box3, box4, box5)
+        let player = "x"
+        playerWon(player, box1, box2, box3, box4, box5)
         return true
 
     } else
 
     if (box1.getElementsByTagName(`p`)[0].textContent === "O" && box2.getElementsByTagName(`p`)[0].textContent === "O" && box3.getElementsByTagName(`p`)[0].textContent === "O" && box4.getElementsByTagName(`p`)[0].textContent === "O" && box5.getElementsByTagName(`p`)[0].textContent === "O") {
-        playerO_won(box1, box2, box3, box4, box5)
+        let player = "o"
+        playerWon(player, box1, box2, box3, box4, box5)
         return true
     }
     return false
@@ -104,10 +105,9 @@ let drawMoveTitle = function (flag) {
     }
 }
 
-/* colors the winning player's field and saves the point to local storage */
-let playerX_won = function (box1, box2, box3, box4, box5) {
+
+function playerWon(player, box1, box2, box3, box4, box5) {
     onMove.textContent = ""
-    onMove.append("X")
     onMove.style.color = "orange"
     onMove.style.fontSize = "40px"
 
@@ -123,50 +123,38 @@ let playerX_won = function (box1, box2, box3, box4, box5) {
 
     new Audio(`audio/win.wav`).play()
 
+    if (player === "x") {
+        onMove.append("X")
 
-    let pointsX = playerX.innerHTML
+        let pointsX = playerX.innerHTML
 
-    pointsX++
-    playerX.textContent = ""
+        pointsX++
+        playerX.textContent = ""
 
-    localStorage.setItem("playerX", JSON.stringify(pointsX))
+        localStorage.setItem("playerX", JSON.stringify(pointsX))
 
-    pointsX = JSON.parse(localStorage.getItem("playerX"))
+        playerX.append(pointsX)
 
-    playerX.append(pointsX)
+    } else {
+        onMove.append("O")
+
+        let pointsO = playerO.innerHTML
+
+        pointsO++
+        playerO.textContent = ""
+
+        localStorage.setItem("playerO", JSON.stringify(pointsO))
+
+        playerO.append(pointsO)
+
+    }
+
+
 
 }
 
-/* colors the winning player's field and saves the point to local storage */
-let playerO_won = function (box1, box2, box3, box4, box5) {
-    onMove.textContent = ""
-    onMove.append("O")
-    onMove.style.color = "orange"
-    onMove.style.fontSize = "40px"
 
-    gameStatus.textContent = ""
-    gameStatus.append("Wins:")
-    gameStatus.style.fontSize = "40px"
 
-    box1.style.backgroundColor = "orange"
-    box2.style.backgroundColor = "orange"
-    box3.style.backgroundColor = "orange"
-    box4.style.backgroundColor = "orange"
-    box5.style.backgroundColor = "orange"
-
-    new Audio(`audio/win.wav`).play()
-
-    let pointsO = playerO.innerHTML
-
-    pointsO++
-    playerO.textContent = ""
-
-    localStorage.setItem("playerO", JSON.stringify(pointsO))
-
-    pointsO = JSON.parse(localStorage.getItem("playerO"))
-
-    playerO.append(pointsO)
-}
 
 /* if the winner is not found, it checks the field and if the field is full of 1, then it is a draw. 
     If a winner has been found sets all flags to 1 - makes the next move impossible.*/
