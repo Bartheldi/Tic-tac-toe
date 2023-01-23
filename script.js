@@ -4,6 +4,7 @@ let resetCalc = document.querySelector(".btn-resetCalc")
 let gameStatus = document.querySelector("#heading #player-move-text")
 let playerX = document.querySelector("#player-score .scoreX")
 let playerO = document.querySelector("#player-score .scoreO")
+let colBoxSelect = document.querySelectorAll("#column1-box1,#column1-box2,#column1-box3,#column1-box4,#column1-box5,#column1-box6,#column2-box1,#column2-box2,#column2-box3,#column2-box4,#column2-box5,#column2-box6,#column3-box1,#column3-box2,#column3-box3,#column3-box4,#column3-box5,#column3-box6,#column4-box1,#column4-box2,#column4-box3,#column4-box4,#column4-box5,#column4-box6,#column5-box1,#column5-box2,#column5-box3,#column5-box4,#column5-box5,#column5-box6,#column6-box1,#column6-box2,#column6-box3,#column6-box4,#column6-box5,#column6-box6")
 
 
 
@@ -33,48 +34,20 @@ if (pointsO === null) {
 
 drawMoveTitle(flag)
 
-/* variables checking whether the box was clicked -> 0 = no, 1 = yes*/
-let flagCol1Box1 = 0
-let flagCol1Box2 = 0
-let flagCol1Box3 = 0
-let flagCol1Box4 = 0
-let flagCol1Box5 = 0
-let flagCol1Box6 = 0
 
-let flagCol2Box1 = 0
-let flagCol2Box2 = 0
-let flagCol2Box3 = 0
-let flagCol2Box4 = 0
-let flagCol2Box5 = 0
-let flagCol2Box6 = 0
+/* Array checking whether the box was clicked -> 0 = no, 1 = yes*/
+let flagColBox = new Array(7);
 
-let flagCol3Box1 = 0
-let flagCol3Box2 = 0
-let flagCol3Box3 = 0
-let flagCol3Box4 = 0
-let flagCol3Box5 = 0
-let flagCol3Box6 = 0
+for (let i = 0; i < flagColBox.length; i++) {
+    flagColBox[i] = new Array(7);
+}
 
-let flagCol4Box1 = 0
-let flagCol4Box2 = 0
-let flagCol4Box3 = 0
-let flagCol4Box4 = 0
-let flagCol4Box5 = 0
-let flagCol4Box6 = 0
+for (let i = 1; i < 7; i++) {
+    for (let j = 1; j < 7; j++) {
+        flagColBox[i][j] = 0;
+    }
+}
 
-let flagCol5Box1 = 0
-let flagCol5Box2 = 0
-let flagCol5Box3 = 0
-let flagCol5Box4 = 0
-let flagCol5Box5 = 0
-let flagCol5Box6 = 0
-
-let flagCol6Box1 = 0
-let flagCol6Box2 = 0
-let flagCol6Box3 = 0
-let flagCol6Box4 = 0
-let flagCol6Box5 = 0
-let flagCol6Box6 = 0
 
 
 /* for possible game draw purpose */
@@ -84,62 +57,39 @@ for (i = 0; i < 36; i++) {
 
 
 
+// Create one dimensional array
+let colBox = new Array(7);
 
 
-let col1Box1 = document.querySelector("#column1-box1")
-let col1Box2 = document.querySelector("#column1-box2")
-let col1Box3 = document.querySelector("#column1-box3")
-let col1Box4 = document.querySelector("#column1-box4")
-let col1Box5 = document.querySelector("#column1-box5")
-let col1Box6 = document.querySelector("#column1-box6")
+// Loop to create 2D array using 1D array
+for (let i = 0; i < colBox.length; i++) {
+    colBox[i] = new Array(7);
+}
 
-let col2Box1 = document.querySelector("#column2-box1")
-let col2Box2 = document.querySelector("#column2-box2")
-let col2Box3 = document.querySelector("#column2-box3")
-let col2Box4 = document.querySelector("#column2-box4")
-let col2Box5 = document.querySelector("#column2-box5")
-let col2Box6 = document.querySelector("#column2-box6")
+let h = 0;
 
-let col3Box1 = document.querySelector("#column3-box1")
-let col3Box2 = document.querySelector("#column3-box2")
-let col3Box3 = document.querySelector("#column3-box3")
-let col3Box4 = document.querySelector("#column3-box4")
-let col3Box5 = document.querySelector("#column3-box5")
-let col3Box6 = document.querySelector("#column3-box6")
-
-let col4Box1 = document.querySelector("#column4-box1")
-let col4Box2 = document.querySelector("#column4-box2")
-let col4Box3 = document.querySelector("#column4-box3")
-let col4Box4 = document.querySelector("#column4-box4")
-let col4Box5 = document.querySelector("#column4-box5")
-let col4Box6 = document.querySelector("#column4-box6")
-
-let col5Box1 = document.querySelector("#column5-box1")
-let col5Box2 = document.querySelector("#column5-box2")
-let col5Box3 = document.querySelector("#column5-box3")
-let col5Box4 = document.querySelector("#column5-box4")
-let col5Box5 = document.querySelector("#column5-box5")
-let col5Box6 = document.querySelector("#column5-box6")
-
-let col6Box1 = document.querySelector("#column6-box1")
-let col6Box2 = document.querySelector("#column6-box2")
-let col6Box3 = document.querySelector("#column6-box3")
-let col6Box4 = document.querySelector("#column6-box4")
-let col6Box5 = document.querySelector("#column6-box5")
-let col6Box6 = document.querySelector("#column6-box6")
+// Loop to initialize 2D array elements.
+for (let i = 1; i < 7; i++) {
+    for (let j = 1; j < 7; j++) {
+        colBox[i][j] = colBoxSelect[h++];
+    }
+}
 
 
-col1Box1.addEventListener("click", function (e) {
+
+
+
+colBox[1][1].addEventListener("click", function (e) {
 
     // if variable is value 0 then create element p, 0 means first click
-    if (flagCol1Box1 === 0) {
+    if (flagColBox[1][1] === 0) {
 
-        print(col1Box1)
+        print(colBox[1][1])
 
 
 
         // if 1 - do nothing after another click 
-        flagCol1Box1 = 1
+        flagColBox[1][1] = 1
 
         tieArray[0] = 1
 
@@ -149,21 +99,21 @@ col1Box1.addEventListener("click", function (e) {
 
         // Check the win possibility
 
-        if (flagCol2Box1 == 1 && flagCol3Box1 == 1 && flagCol4Box1 == 1 && flagCol5Box1 == 1 || 
-            flagCol2Box2 == 1 && flagCol3Box3 == 1 && flagCol4Box4 == 1 && flagCol5Box5 == 1 || 
-            flagCol1Box2 == 1 && flagCol1Box3 == 1 && flagCol1Box4 == 1 && flagCol1Box5 == 1) {
+        if (flagColBox[2][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1 ||
+            flagColBox[2][2] == 1 && flagColBox[3][3] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[1][2] == 1 && flagColBox[1][3] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1) {
 
             // Checking horizontal win possibility
-            if (flagCol2Box1 == 1 && flagCol3Box1 == 1 && flagCol4Box1 == 1 && flagCol5Box1 == 1) {
-                winner = win(col1Box1, col2Box1, col3Box1, col4Box1, col5Box1)
+            if (flagColBox[2][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1) {
+                winner = win(colBox[1][1], colBox[2][1], colBox[3][1], colBox[4][1], colBox[5][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
             // Checking vertical win possibility
-            if (flagCol2Box2 == 1 && flagCol3Box3 == 1 && flagCol4Box4 == 1 && flagCol5Box5 == 1) {
-                winner = win(col1Box1, col2Box2, col3Box3, col4Box4, col5Box5)
+            if (flagColBox[2][2] == 1 && flagColBox[3][3] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[1][1], colBox[2][2], colBox[3][3], colBox[4][4], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -171,8 +121,8 @@ col1Box1.addEventListener("click", function (e) {
 
 
             // Checking column win possibility
-            if (flagCol1Box2 == 1 && flagCol1Box3 == 1 && flagCol1Box4 == 1 && flagCol1Box5 == 1) {
-                winner = win(col1Box1, col1Box2, col1Box3, col1Box4, col1Box5)
+            if (flagColBox[1][2] == 1 && flagColBox[1][3] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1) {
+                winner = win(colBox[1][1], colBox[1][2], colBox[1][3], colBox[1][4], colBox[1][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -190,14 +140,14 @@ col1Box1.addEventListener("click", function (e) {
 
 
 
-col1Box2.addEventListener("click", function (e) {
+colBox[1][2].addEventListener("click", function (e) {
 
 
-    if (flagCol1Box2 === 0) {
+    if (flagColBox[1][2] === 0) {
 
-        print(col1Box2)
+        print(colBox[1][2])
 
-        flagCol1Box2 = 1
+        flagColBox[1][2] = 1
 
         tieArray[1] = 1
 
@@ -205,37 +155,37 @@ col1Box2.addEventListener("click", function (e) {
         drawMoveTitle(flag)
 
 
-        if (flagCol2Box2 == 1 && flagCol3Box2 == 1 && flagCol4Box2 == 1 && flagCol5Box2 == 1 || flagCol2Box3 == 1 && flagCol3Box4 == 1 && flagCol4Box5 == 1 && flagCol5Box6 == 1 || flagCol1Box3 == 1 && flagCol1Box4 == 1 && flagCol1Box5 == 1 && flagCol1Box6 == 1 || flagCol1Box1 == 1 && flagCol1Box3 == 1 && flagCol1Box4 == 1 && flagCol1Box5 == 1) {
+        if (flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1 || flagColBox[2][3] == 1 && flagColBox[3][4] == 1 && flagColBox[4][5] == 1 && flagColBox[5][6] == 1 || flagColBox[1][3] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1 && flagColBox[1][6] == 1 || flagColBox[1][1] == 1 && flagColBox[1][3] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1) {
 
 
-            if (flagCol2Box2 == 1 && flagCol3Box2 == 1 && flagCol4Box2 == 1 && flagCol5Box2 == 1) {
+            if (flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1) {
 
-                winner = win(col1Box2, col2Box2, col3Box2, col4Box2, col5Box2)
+                winner = win(colBox[1][2], colBox[2][2], colBox[3][2], colBox[4][2], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box3 == 1 && flagCol3Box4 == 1 && flagCol4Box5 == 1 && flagCol5Box6 == 1) {
+            if (flagColBox[2][3] == 1 && flagColBox[3][4] == 1 && flagColBox[4][5] == 1 && flagColBox[5][6] == 1) {
 
-                winner = win(col1Box2, col2Box3, col3Box4, col4Box5, col5Box6)
+                winner = win(colBox[1][2], colBox[2][3], colBox[3][4], colBox[4][5], colBox[5][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box3 == 1 && flagCol1Box4 == 1 && flagCol1Box5 == 1 && flagCol1Box6 == 1) {
+            if (flagColBox[1][3] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1 && flagColBox[1][6] == 1) {
 
-                winner = win(col1Box2, col1Box3, col1Box4, col1Box5, col1Box6)
+                winner = win(colBox[1][2], colBox[1][3], colBox[1][4], colBox[1][5], colBox[1][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
 
-            if (flagCol1Box1 == 1 && flagCol1Box3 == 1 && flagCol1Box4 == 1 && flagCol1Box5 == 1) {
+            if (flagColBox[1][1] == 1 && flagColBox[1][3] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1) {
 
-                winner = win(col1Box2, col1Box1, col1Box3, col1Box4, col1Box5)
+                winner = win(colBox[1][2], colBox[1][1], colBox[1][3], colBox[1][4], colBox[1][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -255,38 +205,38 @@ col1Box2.addEventListener("click", function (e) {
 
 
 
-col1Box3.addEventListener("click", function (e) {
+colBox[1][3].addEventListener("click", function (e) {
 
 
-    if (flagCol1Box3 === 0) {
+    if (flagColBox[1][3] === 0) {
 
-        print(col1Box3)
+        print(colBox[1][3])
 
-        flagCol1Box3 = 1
+        flagColBox[1][3] = 1
 
         tieArray[2] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol2Box3 == 1 && flagCol3Box3 == 1 && flagCol4Box3 == 1 && flagCol5Box3 == 1 || flagCol1Box1 == 1 && flagCol1Box2 == 1 && flagCol1Box4 == 1 && flagCol1Box5 == 1 || flagCol1Box6 == 1 && flagCol1Box2 == 1 && flagCol1Box4 == 1 && flagCol1Box5 == 1) {
+        if (flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1 || flagColBox[1][1] == 1 && flagColBox[1][2] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1 || flagColBox[1][6] == 1 && flagColBox[1][2] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1) {
 
-            if (flagCol2Box3 == 1 && flagCol3Box3 == 1 && flagCol4Box3 == 1 && flagCol5Box3 == 1) {
-                winner = win(col1Box3, col2Box3, col3Box3, col4Box3, col5Box3)
+            if (flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1) {
+                winner = win(colBox[1][3], colBox[2][3], colBox[3][3], colBox[4][3], colBox[5][3])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box1 == 1 && flagCol1Box2 == 1 && flagCol1Box4 == 1 && flagCol1Box5 == 1) {
-                winner = win(col1Box3, col1Box1, col1Box2, col1Box4, col1Box5)
+            if (flagColBox[1][1] == 1 && flagColBox[1][2] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1) {
+                winner = win(colBox[1][3], colBox[1][1], colBox[1][2], colBox[1][4], colBox[1][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box6 == 1 && flagCol1Box2 == 1 && flagCol1Box4 == 1 && flagCol1Box5 == 1) {
-                winner = win(col1Box3, col1Box6, col1Box2, col1Box4, col1Box5)
+            if (flagColBox[1][6] == 1 && flagColBox[1][2] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1) {
+                winner = win(colBox[1][3], colBox[1][6], colBox[1][2], colBox[1][4], colBox[1][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -302,40 +252,40 @@ col1Box3.addEventListener("click", function (e) {
 
 
 
-col1Box4.addEventListener("click", function (e) {
+colBox[1][4].addEventListener("click", function (e) {
 
 
-    if (flagCol1Box4 === 0) {
+    if (flagColBox[1][4] === 0) {
 
-        print(col1Box4)
-
-
+        print(colBox[1][4])
 
 
-        flagCol1Box4 = 1
+
+
+        flagColBox[1][4] = 1
 
         tieArray[3] = 1
 
         drawMoveTitle(flag)
 
-        if (flagCol2Box4 == 1 && flagCol3Box4 == 1 && flagCol4Box4 == 1 && flagCol5Box4 == 1 || flagCol1Box1 == 1 && flagCol1Box2 == 1 && flagCol1Box3 == 1 && flagCol1Box5 == 1 || flagCol1Box6 == 1 && flagCol1Box5 == 1 && flagCol1Box3 == 1 && flagCol1Box2 == 1) {
+        if (flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1 || flagColBox[1][1] == 1 && flagColBox[1][2] == 1 && flagColBox[1][3] == 1 && flagColBox[1][5] == 1 || flagColBox[1][6] == 1 && flagColBox[1][5] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1) {
 
-            if (flagCol2Box4 == 1 && flagCol3Box4 == 1 && flagCol4Box4 == 1 && flagCol5Box4 == 1) {
-                winner = win(col1Box4, col2Box4, col3Box4, col4Box4, col5Box4)
+            if (flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1) {
+                winner = win(colBox[1][4], colBox[2][4], colBox[3][4], colBox[4][4], colBox[5][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box1 == 1 && flagCol1Box2 == 1 && flagCol1Box3 == 1 && flagCol1Box5 == 1) {
-                winner = win(col1Box4, col1Box1, col1Box2, col1Box3, col1Box5)
+            if (flagColBox[1][1] == 1 && flagColBox[1][2] == 1 && flagColBox[1][3] == 1 && flagColBox[1][5] == 1) {
+                winner = win(colBox[1][4], colBox[1][1], colBox[1][2], colBox[1][3], colBox[1][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box6 == 1 && flagCol1Box5 == 1 && flagCol1Box3 == 1 && flagCol1Box2 == 1) {
-                winner = win(col1Box4, col1Box6, col1Box2, col1Box3, col1Box5)
+            if (flagColBox[1][6] == 1 && flagColBox[1][5] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1) {
+                winner = win(colBox[1][4], colBox[1][6], colBox[1][2], colBox[1][3], colBox[1][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -350,45 +300,45 @@ col1Box4.addEventListener("click", function (e) {
 
 
 
-col1Box5.addEventListener("click", function (e) {
+colBox[1][5].addEventListener("click", function (e) {
 
 
-    if (flagCol1Box5 === 0) {
+    if (flagColBox[1][5] === 0) {
 
-        print(col1Box5)
+        print(colBox[1][5])
 
-        flagCol1Box5 = 1
+        flagColBox[1][5] = 1
 
         tieArray[4] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol2Box5 == 1 && flagCol3Box5 == 1 && flagCol4Box5 == 1 && flagCol5Box5 == 1 || flagCol2Box4 == 1 && flagCol3Box3 == 1 && flagCol4Box2 == 1 && flagCol5Box1 == 1 || flagCol1Box6 == 1 && flagCol1Box4 == 1 && flagCol1Box3 == 1 && flagCol1Box2 == 1 || flagCol1Box4 == 1 && flagCol1Box3 == 1 && flagCol1Box2 == 1 && flagCol1Box1 == 1) {
+        if (flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1 || flagColBox[2][4] == 1 && flagColBox[3][3] == 1 && flagColBox[4][2] == 1 && flagColBox[5][1] == 1 || flagColBox[1][6] == 1 && flagColBox[1][4] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1 || flagColBox[1][4] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1 && flagColBox[1][1] == 1) {
 
-            if (flagCol2Box5 == 1 && flagCol3Box5 == 1 && flagCol4Box5 == 1 && flagCol5Box5 == 1) {
-                winner = win(col1Box5, col2Box5, col3Box5, col4Box5, col5Box5)
+            if (flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[1][5], colBox[2][5], colBox[3][5], colBox[4][5], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box4 == 1 && flagCol3Box3 == 1 && flagCol4Box2 == 1 && flagCol5Box1 == 1) {
-                winner = win(col1Box5, col2Box4, col3Box3, col4Box2, col5Box1)
+            if (flagColBox[2][4] == 1 && flagColBox[3][3] == 1 && flagColBox[4][2] == 1 && flagColBox[5][1] == 1) {
+                winner = win(colBox[1][5], colBox[2][4], colBox[3][3], colBox[4][2], colBox[5][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box6 == 1 && flagCol1Box4 == 1 && flagCol1Box3 == 1 && flagCol1Box2 == 1) {
-                winner = win(col1Box5, col1Box6, col1Box4, col1Box3, col1Box2)
+            if (flagColBox[1][6] == 1 && flagColBox[1][4] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1) {
+                winner = win(colBox[1][5], colBox[1][6], colBox[1][4], colBox[1][3], colBox[1][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box4 == 1 && flagCol1Box3 == 1 && flagCol1Box2 == 1 && flagCol1Box1 == 1) {
-                winner = win(col1Box5, col1Box4, col1Box3, col1Box2, col1Box1)
+            if (flagColBox[1][4] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1 && flagColBox[1][1] == 1) {
+                winner = win(colBox[1][5], colBox[1][4], colBox[1][3], colBox[1][2], colBox[1][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -405,39 +355,39 @@ col1Box5.addEventListener("click", function (e) {
 
 
 
-col1Box6.addEventListener("click", function (e) {
+colBox[1][6].addEventListener("click", function (e) {
 
 
-    if (flagCol1Box6 === 0) {
+    if (flagColBox[1][6] === 0) {
 
-        print(col1Box6)
+        print(colBox[1][6])
 
 
-        flagCol1Box6 = 1
+        flagColBox[1][6] = 1
 
         tieArray[5] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol2Box6 == 1 && flagCol3Box6 == 1 && flagCol4Box6 == 1 && flagCol5Box6 == 1 || flagCol2Box5 == 1 && flagCol3Box4 == 1 && flagCol4Box3 == 1 && flagCol5Box2 == 1 || flagCol1Box5 == 1 && flagCol1Box4 == 1 && flagCol1Box3 == 1 && flagCol1Box2 == 1) {
+        if (flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1 || flagColBox[2][5] == 1 && flagColBox[3][4] == 1 && flagColBox[4][3] == 1 && flagColBox[5][2] == 1 || flagColBox[1][5] == 1 && flagColBox[1][4] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1) {
 
-            if (flagCol2Box6 == 1 && flagCol3Box6 == 1 && flagCol4Box6 == 1 && flagCol5Box6 == 1) {
-                winner = win(col1Box6, col2Box6, col3Box6, col4Box6, col5Box6)
+            if (flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1) {
+                winner = win(colBox[1][6], colBox[2][6], colBox[3][6], colBox[4][6], colBox[5][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box5 == 1 && flagCol3Box4 == 1 && flagCol4Box3 == 1 && flagCol5Box2 == 1) {
-                winner = win(col1Box6, col2Box5, col3Box4, col4Box3, col5Box2)
+            if (flagColBox[2][5] == 1 && flagColBox[3][4] == 1 && flagColBox[4][3] == 1 && flagColBox[5][2] == 1) {
+                winner = win(colBox[1][6], colBox[2][5], colBox[3][4], colBox[4][3], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box5 == 1 && flagCol1Box4 == 1 && flagCol1Box3 == 1 && flagCol1Box2 == 1) {
-                winner = win(col1Box6, col1Box5, col1Box4, col1Box3, col1Box2)
+            if (flagColBox[1][5] == 1 && flagColBox[1][4] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1) {
+                winner = win(colBox[1][6], colBox[1][5], colBox[1][4], colBox[1][3], colBox[1][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -459,46 +409,46 @@ col1Box6.addEventListener("click", function (e) {
 
 
 
-col2Box1.addEventListener("click", function (e) {
+colBox[2][1].addEventListener("click", function (e) {
 
 
-    if (flagCol2Box1 === 0) {
+    if (flagColBox[2][1] === 0) {
 
-        print(col2Box1)
+        print(colBox[2][1])
 
 
-        flagCol2Box1 = 1
+        flagColBox[2][1] = 1
 
         tieArray[6] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box1 == 1 && flagCol3Box1 == 1 && flagCol4Box1 == 1 && flagCol5Box1 == 1 || flagCol6Box1 == 1 && flagCol3Box1 == 1 && flagCol4Box1 == 1 && flagCol5Box1 == 1 || flagCol3Box2 == 1 && flagCol4Box3 == 1 && flagCol5Box4 == 1 && flagCol6Box5 == 1 || flagCol2Box2 == 1 && flagCol2Box3 == 1 && flagCol2Box4 == 1 && flagCol2Box5 == 1) {
+        if (flagColBox[1][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1 || flagColBox[6][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1 || flagColBox[3][2] == 1 && flagColBox[4][3] == 1 && flagColBox[5][4] == 1 && flagColBox[6][5] == 1 || flagColBox[2][2] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1) {
 
-            if (flagCol1Box1 == 1 && flagCol3Box1 == 1 && flagCol4Box1 == 1 && flagCol5Box1 == 1) {
-                winner = win(col2Box1, col1Box1, col3Box1, col4Box1, col5Box1)
+            if (flagColBox[1][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1) {
+                winner = win(colBox[2][1], colBox[1][1], colBox[3][1], colBox[4][1], colBox[5][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box1 == 1 && flagCol3Box1 == 1 && flagCol4Box1 == 1 && flagCol5Box1 == 1) {
-                winner = win(col2Box1, col6Box1, col3Box1, col4Box1, col5Box1)
+            if (flagColBox[6][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1) {
+                winner = win(colBox[2][1], colBox[6][1], colBox[3][1], colBox[4][1], colBox[5][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol3Box2 == 1 && flagCol4Box3 == 1 && flagCol5Box4 == 1 && flagCol6Box5 == 1) {
-                winner = win(col2Box1, col3Box2, col4Box3, col5Box4, col6Box5)
+            if (flagColBox[3][2] == 1 && flagColBox[4][3] == 1 && flagColBox[5][4] == 1 && flagColBox[6][5] == 1) {
+                winner = win(colBox[2][1], colBox[3][2], colBox[4][3], colBox[5][4], colBox[6][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box2 == 1 && flagCol2Box3 == 1 && flagCol2Box4 == 1 && flagCol2Box5 == 1) {
-                winner = win(col2Box1, col2Box2, col2Box3, col2Box4, col2Box5)
+            if (flagColBox[2][2] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1) {
+                winner = win(colBox[2][1], colBox[2][2], colBox[2][3], colBox[2][4], colBox[2][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -512,75 +462,75 @@ col2Box1.addEventListener("click", function (e) {
 
 
 
-col2Box2.addEventListener("click", function (e) {
+colBox[2][2].addEventListener("click", function (e) {
 
 
-    if (flagCol2Box2 === 0) {
+    if (flagColBox[2][2] === 0) {
 
-        print(col2Box2) 
+        print(colBox[2][2])
 
-        flagCol2Box2 = 1
+        flagColBox[2][2] = 1
 
         tieArray[7] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box2 == 1 && flagCol3Box2 == 1 && flagCol4Box2 == 1 && flagCol5Box2 == 1 || flagCol6Box2 == 1 && flagCol3Box2 == 1 && flagCol4Box2 == 1 && flagCol5Box2 == 1 || flagCol1Box1 == 1 && flagCol3Box3 == 1 && flagCol4Box4 == 1 && flagCol5Box5 == 1 || flagCol6Box6 == 1 && flagCol3Box3 == 1 && flagCol4Box4 == 1 && flagCol5Box5 == 1 || flagCol2Box1 == 1 && flagCol2Box3 == 1 && flagCol2Box4 == 1 && flagCol2Box5 == 1 || flagCol2Box6 == 1 && flagCol2Box3 == 1 && flagCol2Box4 == 1 && flagCol2Box5 == 1) {
+        if (flagColBox[1][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1 || flagColBox[6][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1 || flagColBox[1][1] == 1 && flagColBox[3][3] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1 || flagColBox[6][6] == 1 && flagColBox[3][3] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1 || flagColBox[2][1] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1 || flagColBox[2][6] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1) {
 
 
-            if (flagCol1Box2 == 1 && flagCol3Box2 == 1 && flagCol4Box2 == 1 && flagCol5Box2 == 1) {
+            if (flagColBox[1][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1) {
 
-                winner = win(col2Box2, col1Box2, col3Box2, col4Box2, col5Box2)
+                winner = win(colBox[2][2], colBox[1][2], colBox[3][2], colBox[4][2], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
-                } 
+                }
 
             }
 
-            if (flagCol6Box2 == 1 && flagCol3Box2 == 1 && flagCol4Box2 == 1 && flagCol5Box2 == 1) {
+            if (flagColBox[6][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1) {
 
-                winner = win(col2Box2, col6Box2, col3Box2, col4Box2, col5Box2)
+                winner = win(colBox[2][2], colBox[6][2], colBox[3][2], colBox[4][2], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
-                } 
+                }
             }
 
-            if (flagCol1Box1 == 1 && flagCol3Box3 == 1 && flagCol4Box4 == 1 && flagCol5Box5 == 1) {
+            if (flagColBox[1][1] == 1 && flagColBox[3][3] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1) {
 
-                winner = win(col2Box2, col1Box1, col3Box3, col4Box4, col5Box5)
+                winner = win(colBox[2][2], colBox[1][1], colBox[3][3], colBox[4][4], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
-                } 
+                }
             }
 
-            if (flagCol6Box6 == 1 && flagCol3Box3 == 1 && flagCol4Box4 == 1 && flagCol5Box5 == 1) {
+            if (flagColBox[6][6] == 1 && flagColBox[3][3] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1) {
 
-                winner = win(col2Box2, col6Box6, col3Box3, col4Box4, col5Box5)
+                winner = win(colBox[2][2], colBox[6][6], colBox[3][3], colBox[4][4], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
-                } 
+                }
             }
 
-            if (flagCol2Box1 == 1 && flagCol2Box3 == 1 && flagCol2Box4 == 1 && flagCol2Box5 == 1) {
+            if (flagColBox[2][1] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1) {
 
-                winner = win(col2Box2, col2Box1, col2Box3, col2Box4, col2Box5)
+                winner = win(colBox[2][2], colBox[2][1], colBox[2][3], colBox[2][4], colBox[2][5])
                 if (winner === true) {
                     pomWinner = winner
-                } 
+                }
             }
 
-            if (flagCol2Box6 == 1 && flagCol2Box3 == 1 && flagCol2Box4 == 1 && flagCol2Box5 == 1) {
+            if (flagColBox[2][6] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1) {
 
-                winner = win(col2Box2, col2Box6, col2Box3, col2Box4, col2Box5)
+                winner = win(colBox[2][2], colBox[2][6], colBox[2][3], colBox[2][4], colBox[2][5])
                 if (winner === true) {
                     pomWinner = winner
-                } 
+                }
 
             }
 
 
-            checkPossibleTie(pomWinner) 
+            checkPossibleTie(pomWinner)
 
 
         }
@@ -588,57 +538,57 @@ col2Box2.addEventListener("click", function (e) {
 })
 
 
-col2Box3.addEventListener("click", function (e) {
+colBox[2][3].addEventListener("click", function (e) {
 
 
-    if (flagCol2Box3 === 0) {
+    if (flagColBox[2][3] === 0) {
 
-        print(col2Box3)
+        print(colBox[2][3])
 
 
-        flagCol2Box3 = 1
+        flagColBox[2][3] = 1
 
         tieArray[8] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box3 == 1 && flagCol3Box3 == 1 && flagCol4Box3 == 1 && flagCol5Box3 == 1 ||
-            flagCol6Box3 == 1 && flagCol3Box3 == 1 && flagCol4Box3 == 1 && flagCol5Box3 == 1 ||
-            flagCol1Box2 == 1 && flagCol3Box4 == 1 && flagCol4Box5 == 1 && flagCol5Box6 == 1 ||
-            flagCol2Box1 == 1 && flagCol2Box2 == 1 && flagCol2Box4 == 1 && flagCol2Box5 == 1 ||
-            flagCol2Box6 == 1 && flagCol2Box2 == 1 && flagCol2Box4 == 1 && flagCol2Box5 == 1) {
+        if (flagColBox[1][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1 ||
+            flagColBox[6][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1 ||
+            flagColBox[1][2] == 1 && flagColBox[3][4] == 1 && flagColBox[4][5] == 1 && flagColBox[5][6] == 1 ||
+            flagColBox[2][1] == 1 && flagColBox[2][2] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1 ||
+            flagColBox[2][6] == 1 && flagColBox[2][2] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1) {
 
-            if (flagCol1Box3 == 1 && flagCol3Box3 == 1 && flagCol4Box3 == 1 && flagCol5Box3 == 1) {
-                winner = win(col2Box3, col1Box3, col3Box3, col4Box3, col5Box3)
+            if (flagColBox[1][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1) {
+                winner = win(colBox[2][3], colBox[1][3], colBox[3][3], colBox[4][3], colBox[5][3])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box3 == 1 && flagCol3Box3 == 1 && flagCol4Box3 == 1 && flagCol5Box3 == 1) {
-                winner = win(col2Box3, col6Box3, col3Box3, col4Box3, col5Box3)
+            if (flagColBox[6][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1) {
+                winner = win(colBox[2][3], colBox[6][3], colBox[3][3], colBox[4][3], colBox[5][3])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box2 == 1 && flagCol3Box4 == 1 && flagCol4Box5 == 1 && flagCol5Box6 == 1) {
-                winner = win(col2Box3, col1Box2, col3Box4, col4Box5, col5Box6)
+            if (flagColBox[1][2] == 1 && flagColBox[3][4] == 1 && flagColBox[4][5] == 1 && flagColBox[5][6] == 1) {
+                winner = win(colBox[2][3], colBox[1][2], colBox[3][4], colBox[4][5], colBox[5][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box1 == 1 && flagCol2Box2 == 1 && flagCol2Box4 == 1 && flagCol2Box5 == 1) {
-                winner = win(col2Box3, col2Box1, col2Box2, col2Box4, col2Box5)
+            if (flagColBox[2][1] == 1 && flagColBox[2][2] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1) {
+                winner = win(colBox[2][3], colBox[2][1], colBox[2][2], colBox[2][4], colBox[2][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box6 == 1 && flagCol2Box2 == 1 && flagCol2Box4 == 1 && flagCol2Box5 == 1) {
-                winner = win(col2Box3, col2Box6, col2Box2, col2Box4, col2Box5)
+            if (flagColBox[2][6] == 1 && flagColBox[2][2] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1) {
+                winner = win(colBox[2][3], colBox[2][6], colBox[2][2], colBox[2][4], colBox[2][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -651,57 +601,57 @@ col2Box3.addEventListener("click", function (e) {
 })
 
 
-col2Box4.addEventListener("click", function (e) {
+colBox[2][4].addEventListener("click", function (e) {
 
 
-    if (flagCol2Box4 === 0) {
+    if (flagColBox[2][4] === 0) {
 
-        print(col2Box4)
+        print(colBox[2][4])
 
 
-        flagCol2Box4 = 1
+        flagColBox[2][4] = 1
 
         tieArray[9] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box4 == 1 && flagCol3Box4 == 1 && flagCol4Box4 == 1 && flagCol5Box4 == 1 ||
-            flagCol6Box4 == 1 && flagCol3Box4 == 1 && flagCol4Box4 == 1 && flagCol5Box4 == 1 ||
-            flagCol1Box5 == 1 && flagCol3Box3 == 1 && flagCol4Box2 == 1 && flagCol5Box1 == 1 ||
-            flagCol2Box1 == 1 && flagCol2Box2 == 1 && flagCol2Box3 == 1 && flagCol2Box5 == 1 ||
-            flagCol2Box6 == 1 && flagCol2Box5 == 1 && flagCol2Box3 == 1 && flagCol2Box2 == 1) {
+        if (flagColBox[1][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1 ||
+            flagColBox[6][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1 ||
+            flagColBox[1][5] == 1 && flagColBox[3][3] == 1 && flagColBox[4][2] == 1 && flagColBox[5][1] == 1 ||
+            flagColBox[2][1] == 1 && flagColBox[2][2] == 1 && flagColBox[2][3] == 1 && flagColBox[2][5] == 1 ||
+            flagColBox[2][6] == 1 && flagColBox[2][5] == 1 && flagColBox[2][3] == 1 && flagColBox[2][2] == 1) {
 
-            if (flagCol1Box4 == 1 && flagCol3Box4 == 1 && flagCol4Box4 == 1 && flagCol5Box4 == 1) {
-                winner = win(col2Box4, col1Box4, col3Box4, col4Box4, col5Box4)
+            if (flagColBox[1][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1) {
+                winner = win(colBox[2][4], colBox[1][4], colBox[3][4], colBox[4][4], colBox[5][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box4 == 1 && flagCol3Box4 == 1 && flagCol4Box4 == 1 && flagCol5Box4 == 1) {
-                winner = win(col2Box4, col6Box4, col3Box4, col4Box4, col5Box4)
+            if (flagColBox[6][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1) {
+                winner = win(colBox[2][4], colBox[6][4], colBox[3][4], colBox[4][4], colBox[5][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box5 == 1 && flagCol3Box3 == 1 && flagCol4Box2 == 1 && flagCol5Box1 == 1) {
-                winner = win(col2Box4, col1Box5, col3Box3, col4Box2, col5Box1)
+            if (flagColBox[1][5] == 1 && flagColBox[3][3] == 1 && flagColBox[4][2] == 1 && flagColBox[5][1] == 1) {
+                winner = win(colBox[2][4], colBox[1][5], colBox[3][3], colBox[4][2], colBox[5][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box1 == 1 && flagCol2Box2 == 1 && flagCol2Box3 == 1 && flagCol2Box5 == 1) {
-                winner = win(col2Box4, col2Box1, col2Box2, col2Box3, col2Box5)
+            if (flagColBox[2][1] == 1 && flagColBox[2][2] == 1 && flagColBox[2][3] == 1 && flagColBox[2][5] == 1) {
+                winner = win(colBox[2][4], colBox[2][1], colBox[2][2], colBox[2][3], colBox[2][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box6 == 1 && flagCol2Box5 == 1 && flagCol2Box3 == 1 && flagCol2Box2 == 1) {
-                winner = win(col2Box4, col2Box6, col2Box5, col2Box3, col2Box2)
+            if (flagColBox[2][6] == 1 && flagColBox[2][5] == 1 && flagColBox[2][3] == 1 && flagColBox[2][2] == 1) {
+                winner = win(colBox[2][4], colBox[2][6], colBox[2][5], colBox[2][3], colBox[2][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -714,65 +664,65 @@ col2Box4.addEventListener("click", function (e) {
 })
 
 
-col2Box5.addEventListener("click", function (e) {
+colBox[2][5].addEventListener("click", function (e) {
 
 
-    if (flagCol2Box5 === 0) {
+    if (flagColBox[2][5] === 0) {
 
-        print(col2Box5)
+        print(colBox[2][5])
 
 
-        flagCol2Box5 = 1
+        flagColBox[2][5] = 1
 
         tieArray[10] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box5 == 1 && flagCol3Box5 == 1 && flagCol4Box5 == 1 && flagCol5Box5 == 1 ||
-            flagCol6Box5 == 1 && flagCol3Box5 == 1 && flagCol4Box5 == 1 && flagCol5Box5 == 1 ||
-            flagCol1Box6 == 1 && flagCol3Box4 == 1 && flagCol4Box3 == 1 && flagCol5Box2 == 1 ||
-            flagCol6Box1 == 1 && flagCol3Box4 == 1 && flagCol4Box3 == 1 && flagCol5Box2 == 1 ||
-            flagCol2Box1 == 1 && flagCol2Box2 == 1 && flagCol2Box3 == 1 && flagCol2Box4 == 1 ||
-            flagCol2Box6 == 1 && flagCol2Box4 == 1 && flagCol2Box3 == 1 && flagCol2Box2 == 1) {
+        if (flagColBox[1][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[6][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[1][6] == 1 && flagColBox[3][4] == 1 && flagColBox[4][3] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[6][1] == 1 && flagColBox[3][4] == 1 && flagColBox[4][3] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[2][1] == 1 && flagColBox[2][2] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 ||
+            flagColBox[2][6] == 1 && flagColBox[2][4] == 1 && flagColBox[2][3] == 1 && flagColBox[2][2] == 1) {
 
-            if (flagCol1Box5 == 1 && flagCol3Box5 == 1 && flagCol4Box5 == 1 && flagCol5Box5 == 1) {
-                winner = win(col2Box5, col1Box5, col3Box5, col4Box5, col5Box5)
+            if (flagColBox[1][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[2][5], colBox[1][5], colBox[3][5], colBox[4][5], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box5 == 1 && flagCol3Box5 == 1 && flagCol4Box5 == 1 && flagCol5Box5 == 1) {
-                winner = win(col2Box5, col6Box5, col3Box5, col4Box5, col5Box5)
+            if (flagColBox[6][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[2][5], colBox[6][5], colBox[3][5], colBox[4][5], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box6 == 1 && flagCol3Box4 == 1 && flagCol4Box3 == 1 && flagCol5Box2 == 1) {
-                winner = win(col2Box5, col1Box6, col3Box4, col4Box3, col5Box2)
+            if (flagColBox[1][6] == 1 && flagColBox[3][4] == 1 && flagColBox[4][3] == 1 && flagColBox[5][2] == 1) {
+                winner = win(colBox[2][5], colBox[1][6], colBox[3][4], colBox[4][3], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box1 == 1 && flagCol3Box4 == 1 && flagCol4Box3 == 1 && flagCol5Box2 == 1) {
-                winner = win(col2Box5, col6Box1, col3Box4, col4Box3, col5Box2)
+            if (flagColBox[6][1] == 1 && flagColBox[3][4] == 1 && flagColBox[4][3] == 1 && flagColBox[5][2] == 1) {
+                winner = win(colBox[2][5], colBox[6][1], colBox[3][4], colBox[4][3], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box1 == 1 && flagCol2Box2 == 1 && flagCol2Box3 == 1 && flagCol2Box4 == 1) {
-                winner = win(col2Box5, col2Box1, col2Box2, col2Box3, col2Box4)
+            if (flagColBox[2][1] == 1 && flagColBox[2][2] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1) {
+                winner = win(colBox[2][5], colBox[2][1], colBox[2][2], colBox[2][3], colBox[2][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box6 == 1 && flagCol2Box4 == 1 && flagCol2Box3 == 1 && flagCol2Box2 == 1) {
-                winner = win(col2Box5, col2Box6, col2Box4, col2Box3, col2Box2)
+            if (flagColBox[2][6] == 1 && flagColBox[2][4] == 1 && flagColBox[2][3] == 1 && flagColBox[2][2] == 1) {
+                winner = win(colBox[2][5], colBox[2][6], colBox[2][4], colBox[2][3], colBox[2][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -786,51 +736,51 @@ col2Box5.addEventListener("click", function (e) {
 
 
 
-col2Box6.addEventListener("click", function (e) {
+colBox[2][6].addEventListener("click", function (e) {
 
 
-    if (flagCol2Box6 === 0) {
+    if (flagColBox[2][6] === 0) {
 
-        print(col2Box6)
-
-
+        print(colBox[2][6])
 
 
-        flagCol2Box6 = 1
+
+
+        flagColBox[2][6] = 1
 
         tieArray[11] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box6 == 1 && flagCol3Box6 == 1 && flagCol4Box6 == 1 && flagCol5Box6 == 1 ||
-            flagCol6Box6 == 1 && flagCol3Box6 == 1 && flagCol4Box6 == 1 && flagCol5Box6 == 1 ||
-            flagCol3Box5 == 1 && flagCol4Box4 == 1 && flagCol5Box3 == 1 && flagCol6Box2 == 1 ||
-            flagCol2Box5 == 1 && flagCol2Box4 == 1 && flagCol2Box3 == 1 && flagCol2Box2 == 1) {
+        if (flagColBox[1][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1 ||
+            flagColBox[6][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1 ||
+            flagColBox[3][5] == 1 && flagColBox[4][4] == 1 && flagColBox[5][3] == 1 && flagColBox[6][2] == 1 ||
+            flagColBox[2][5] == 1 && flagColBox[2][4] == 1 && flagColBox[2][3] == 1 && flagColBox[2][2] == 1) {
 
-            if (flagCol1Box6 == 1 && flagCol3Box6 == 1 && flagCol4Box6 == 1 && flagCol5Box6 == 1) {
-                winner = win(col2Box6, col1Box6, col3Box6, col4Box6, col5Box6)
+            if (flagColBox[1][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1) {
+                winner = win(colBox[2][6], colBox[1][6], colBox[3][6], colBox[4][6], colBox[5][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box6 == 1 && flagCol3Box6 == 1 && flagCol4Box6 == 1 && flagCol5Box6 == 1) {
-                winner = win(col2Box6, col6Box6, col3Box6, col4Box6, col5Box6)
+            if (flagColBox[6][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1) {
+                winner = win(colBox[2][6], colBox[6][6], colBox[3][6], colBox[4][6], colBox[5][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol3Box5 == 1 && flagCol4Box4 == 1 && flagCol5Box3 == 1 && flagCol6Box2 == 1) {
-                winner = win(col2Box6, col3Box5, col4Box4, col5Box3, col6Box2)
+            if (flagColBox[3][5] == 1 && flagColBox[4][4] == 1 && flagColBox[5][3] == 1 && flagColBox[6][2] == 1) {
+                winner = win(colBox[2][6], colBox[3][5], colBox[4][4], colBox[5][3], colBox[6][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box5 == 1 && flagCol2Box4 == 1 && flagCol2Box3 == 1 && flagCol2Box2 == 1) {
-                winner = win(col2Box6, col2Box5, col2Box4, col2Box3, col2Box2)
+            if (flagColBox[2][5] == 1 && flagColBox[2][4] == 1 && flagColBox[2][3] == 1 && flagColBox[2][2] == 1) {
+                winner = win(colBox[2][6], colBox[2][5], colBox[2][4], colBox[2][3], colBox[2][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -850,40 +800,40 @@ col2Box6.addEventListener("click", function (e) {
 
 
 
-col3Box1.addEventListener("click", function (e) {
+colBox[3][1].addEventListener("click", function (e) {
 
 
-    if (flagCol3Box1 === 0) {
+    if (flagColBox[3][1] === 0) {
 
-        print(col3Box1)
+        print(colBox[3][1])
 
 
-        flagCol3Box1 = 1
+        flagColBox[3][1] = 1
 
         tieArray[12] = 1
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box1 == 1 && flagCol2Box1 == 1 && flagCol4Box1 == 1 && flagCol5Box1 == 1 ||
-            flagCol6Box1 == 1 && flagCol2Box1 == 1 && flagCol4Box1 == 1 && flagCol5Box1 == 1 ||
-            flagCol3Box2 == 1 && flagCol3Box3 == 1 && flagCol3Box4 == 1 && flagCol3Box5 == 1) {
+        if (flagColBox[1][1] == 1 && flagColBox[2][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1 ||
+            flagColBox[6][1] == 1 && flagColBox[2][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1 ||
+            flagColBox[3][2] == 1 && flagColBox[3][3] == 1 && flagColBox[3][4] == 1 && flagColBox[3][5] == 1) {
 
-            if (flagCol1Box1 == 1 && flagCol2Box1 == 1 && flagCol4Box1 == 1 && flagCol5Box1 == 1) {
-                winner = win(col3Box1, col1Box1, col2Box1, col4Box1, col5Box1)
+            if (flagColBox[1][1] == 1 && flagColBox[2][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1) {
+                winner = win(colBox[3][1], colBox[1][1], colBox[2][1], colBox[4][1], colBox[5][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box1 == 1 && flagCol2Box1 == 1 && flagCol4Box1 == 1 && flagCol5Box1 == 1) {
-                winner = win(col3Box1, col6Box1, col2Box1, col4Box1, col5Box1)
+            if (flagColBox[6][1] == 1 && flagColBox[2][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1) {
+                winner = win(colBox[3][1], colBox[6][1], colBox[2][1], colBox[4][1], colBox[5][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol3Box2 == 1 && flagCol3Box3 == 1 && flagCol3Box4 == 1 && flagCol3Box5 == 1) {
-                winner = win(col3Box1, col3Box2, col3Box3, col3Box4, col3Box5)
+            if (flagColBox[3][2] == 1 && flagColBox[3][3] == 1 && flagColBox[3][4] == 1 && flagColBox[3][5] == 1) {
+                winner = win(colBox[3][1], colBox[3][2], colBox[3][3], colBox[3][4], colBox[3][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -902,56 +852,56 @@ col3Box1.addEventListener("click", function (e) {
 
 
 
-col3Box2.addEventListener("click", function (e) {
+colBox[3][2].addEventListener("click", function (e) {
 
 
-    if (flagCol3Box2 === 0) {
+    if (flagColBox[3][2] === 0) {
 
-        print(col3Box2)
+        print(colBox[3][2])
 
 
-        flagCol3Box2 = 1
+        flagColBox[3][2] = 1
 
         tieArray[13] = 1
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box2 == 1 && flagCol2Box2 == 1 && flagCol4Box2 == 1 && flagCol5Box2 == 1 ||
-            flagCol6Box2 == 1 && flagCol2Box2 == 1 && flagCol4Box2 == 1 && flagCol5Box2 == 1 ||
-            flagCol2Box1 == 1 && flagCol4Box3 == 1 && flagCol5Box4 == 1 && flagCol6Box5 == 1 ||
-            flagCol3Box1 == 1 && flagCol3Box3 == 1 && flagCol3Box4 == 1 && flagCol3Box5 == 1 ||
-            flagCol3Box6 == 1 && flagCol3Box3 == 1 && flagCol3Box4 == 1 && flagCol3Box5 == 1) {
+        if (flagColBox[1][2] == 1 && flagColBox[2][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[6][2] == 1 && flagColBox[2][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[2][1] == 1 && flagColBox[4][3] == 1 && flagColBox[5][4] == 1 && flagColBox[6][5] == 1 ||
+            flagColBox[3][1] == 1 && flagColBox[3][3] == 1 && flagColBox[3][4] == 1 && flagColBox[3][5] == 1 ||
+            flagColBox[3][6] == 1 && flagColBox[3][3] == 1 && flagColBox[3][4] == 1 && flagColBox[3][5] == 1) {
 
-            if (flagCol1Box2 == 1 && flagCol2Box2 == 1 && flagCol4Box2 == 1 && flagCol5Box2 == 1) {
-                winner = win(col3Box2, col1Box2, col2Box2, col4Box2, col5Box2)
+            if (flagColBox[1][2] == 1 && flagColBox[2][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1) {
+                winner = win(colBox[3][2], colBox[1][2], colBox[2][2], colBox[4][2], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box2 == 1 && flagCol2Box2 == 1 && flagCol4Box2 == 1 && flagCol5Box2 == 1) {
-                winner = win(col3Box2, col6Box2, col2Box2, col4Box2, col5Box2)
+            if (flagColBox[6][2] == 1 && flagColBox[2][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1) {
+                winner = win(colBox[3][2], colBox[6][2], colBox[2][2], colBox[4][2], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box1 == 1 && flagCol4Box3 == 1 && flagCol5Box4 == 1 && flagCol6Box5 == 1) {
-                winner = win(col3Box2, col2Box1, col4Box3, col5Box4, col6Box5)
+            if (flagColBox[2][1] == 1 && flagColBox[4][3] == 1 && flagColBox[5][4] == 1 && flagColBox[6][5] == 1) {
+                winner = win(colBox[3][2], colBox[2][1], colBox[4][3], colBox[5][4], colBox[6][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol3Box1 == 1 && flagCol3Box3 == 1 && flagCol3Box4 == 1 && flagCol3Box5 == 1) {
-                winner = win(col3Box2, col3Box1, col3Box3, col3Box4, col3Box5)
+            if (flagColBox[3][1] == 1 && flagColBox[3][3] == 1 && flagColBox[3][4] == 1 && flagColBox[3][5] == 1) {
+                winner = win(colBox[3][2], colBox[3][1], colBox[3][3], colBox[3][4], colBox[3][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol3Box6 == 1 && flagCol3Box3 == 1 && flagCol3Box4 == 1 && flagCol3Box5 == 1) {
-                winner = win(col3Box2, col3Box6, col3Box3, col3Box4, col3Box5)
+            if (flagColBox[3][6] == 1 && flagColBox[3][3] == 1 && flagColBox[3][4] == 1 && flagColBox[3][5] == 1) {
+                winner = win(colBox[3][2], colBox[3][6], colBox[3][3], colBox[3][4], colBox[3][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -966,73 +916,73 @@ col3Box2.addEventListener("click", function (e) {
 
 
 
-col3Box3.addEventListener("click", function (e) {
+colBox[3][3].addEventListener("click", function (e) {
 
 
-    if (flagCol3Box3 === 0) {
+    if (flagColBox[3][3] === 0) {
 
-        print(col3Box3)
+        print(colBox[3][3])
 
 
-        flagCol3Box3 = 1
+        flagColBox[3][3] = 1
 
         tieArray[14] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box3 == 1 && flagCol2Box3 == 1 && flagCol4Box3 == 1 && flagCol5Box3 == 1 ||
-            flagCol6Box3 == 1 && flagCol2Box3 == 1 && flagCol4Box3 == 1 && flagCol5Box3 == 1 ||
-            flagCol1Box5 == 1 && flagCol2Box4 == 1 && flagCol4Box2 == 1 && flagCol5Box1 == 1 ||
-            flagCol1Box1 == 1 && flagCol2Box2 == 1 && flagCol4Box4 == 1 && flagCol5Box5 == 1 ||
-            flagCol6Box6 == 1 && flagCol2Box2 == 1 && flagCol4Box4 == 1 && flagCol5Box5 == 1 ||
-            flagCol3Box1 == 1 && flagCol3Box2 == 1 && flagCol3Box4 == 1 && flagCol3Box5 == 1 ||
-            flagCol3Box6 == 1 && flagCol3Box5 == 1 && flagCol3Box4 == 1 && flagCol3Box2 == 1) {
+        if (flagColBox[1][3] == 1 && flagColBox[2][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1 ||
+            flagColBox[6][3] == 1 && flagColBox[2][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1 ||
+            flagColBox[1][5] == 1 && flagColBox[2][4] == 1 && flagColBox[4][2] == 1 && flagColBox[5][1] == 1 ||
+            flagColBox[1][1] == 1 && flagColBox[2][2] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[6][6] == 1 && flagColBox[2][2] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[3][1] == 1 && flagColBox[3][2] == 1 && flagColBox[3][4] == 1 && flagColBox[3][5] == 1 ||
+            flagColBox[3][6] == 1 && flagColBox[3][5] == 1 && flagColBox[3][4] == 1 && flagColBox[3][2] == 1) {
 
-            if (flagCol1Box3 == 1 && flagCol2Box3 == 1 && flagCol4Box3 == 1 && flagCol5Box3 == 1) {
-                winner = win(col3Box3, col1Box3, col2Box3, col4Box3, col5Box3)
+            if (flagColBox[1][3] == 1 && flagColBox[2][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1) {
+                winner = win(colBox[3][3], colBox[1][3], colBox[2][3], colBox[4][3], colBox[5][3])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box3 == 1 && flagCol2Box3 == 1 && flagCol4Box3 == 1 && flagCol5Box3 == 1) {
-                winner = win(col3Box3, col6Box3, col2Box3, col4Box3, col5Box3)
+            if (flagColBox[6][3] == 1 && flagColBox[2][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1) {
+                winner = win(colBox[3][3], colBox[6][3], colBox[2][3], colBox[4][3], colBox[5][3])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box5 == 1 && flagCol2Box4 == 1 && flagCol4Box2 == 1 && flagCol5Box1 == 1) {
-                winner = win(col3Box3, col1Box5, col2Box4, col4Box2, col5Box1)
+            if (flagColBox[1][5] == 1 && flagColBox[2][4] == 1 && flagColBox[4][2] == 1 && flagColBox[5][1] == 1) {
+                winner = win(colBox[3][3], colBox[1][5], colBox[2][4], colBox[4][2], colBox[5][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box1 == 1 && flagCol2Box2 == 1 && flagCol4Box4 == 1 && flagCol5Box5 == 1) {
-                winner = win(col3Box3, col1Box1, col2Box2, col4Box4, col5Box5)
+            if (flagColBox[1][1] == 1 && flagColBox[2][2] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[3][3], colBox[1][1], colBox[2][2], colBox[4][4], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box6 == 1 && flagCol2Box2 == 1 && flagCol4Box4 == 1 && flagCol5Box5 == 1) {
-                winner = win(col3Box3, col6Box6, col2Box2, col4Box4, col5Box5)
+            if (flagColBox[6][6] == 1 && flagColBox[2][2] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[3][3], colBox[6][6], colBox[2][2], colBox[4][4], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol3Box1 == 1 && flagCol3Box2 == 1 && flagCol3Box4 == 1 && flagCol3Box5 == 1) {
-                winner = win(col3Box3, col3Box1, col3Box2, col3Box4, col3Box5)
+            if (flagColBox[3][1] == 1 && flagColBox[3][2] == 1 && flagColBox[3][4] == 1 && flagColBox[3][5] == 1) {
+                winner = win(colBox[3][3], colBox[3][1], colBox[3][2], colBox[3][4], colBox[3][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol3Box6 == 1 && flagCol3Box5 == 1 && flagCol3Box4 == 1 && flagCol3Box2 == 1) {
-                winner = win(col3Box3, col3Box6, col3Box5, col3Box4, col3Box2)
+            if (flagColBox[3][6] == 1 && flagColBox[3][5] == 1 && flagColBox[3][4] == 1 && flagColBox[3][2] == 1) {
+                winner = win(colBox[3][3], colBox[3][6], colBox[3][5], colBox[3][4], colBox[3][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1047,73 +997,73 @@ col3Box3.addEventListener("click", function (e) {
 
 
 
-col3Box4.addEventListener("click", function (e) {
+colBox[3][4].addEventListener("click", function (e) {
 
 
-    if (flagCol3Box4 === 0) {
+    if (flagColBox[3][4] === 0) {
 
-        print(col3Box4)
+        print(colBox[3][4])
 
 
-        flagCol3Box4 = 1
+        flagColBox[3][4] = 1
 
         tieArray[15] = 1
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box4 == 1 && flagCol2Box4 == 1 && flagCol4Box4 == 1 && flagCol5Box4 == 1 ||
-            flagCol6Box4 == 1 && flagCol5Box4 == 1 && flagCol4Box4 == 1 && flagCol2Box4 == 1 ||
-            flagCol1Box2 == 1 && flagCol2Box3 == 1 && flagCol4Box5 == 1 && flagCol5Box6 == 1 ||
-            flagCol1Box6 == 1 && flagCol2Box5 == 1 && flagCol4Box3 == 1 && flagCol5Box2 == 1 ||
-            flagCol6Box1 == 1 && flagCol5Box2 == 1 && flagCol4Box3 == 1 && flagCol2Box5 == 1 ||
-            flagCol3Box1 == 1 && flagCol3Box2 == 1 && flagCol3Box3 == 1 && flagCol3Box5 == 1 ||
-            flagCol3Box6 == 1 && flagCol3Box5 == 1 && flagCol3Box3 == 1 && flagCol3Box2 == 1) {
+        if (flagColBox[1][4] == 1 && flagColBox[2][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1 ||
+            flagColBox[6][4] == 1 && flagColBox[5][4] == 1 && flagColBox[4][4] == 1 && flagColBox[2][4] == 1 ||
+            flagColBox[1][2] == 1 && flagColBox[2][3] == 1 && flagColBox[4][5] == 1 && flagColBox[5][6] == 1 ||
+            flagColBox[1][6] == 1 && flagColBox[2][5] == 1 && flagColBox[4][3] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[6][1] == 1 && flagColBox[5][2] == 1 && flagColBox[4][3] == 1 && flagColBox[2][5] == 1 ||
+            flagColBox[3][1] == 1 && flagColBox[3][2] == 1 && flagColBox[3][3] == 1 && flagColBox[3][5] == 1 ||
+            flagColBox[3][6] == 1 && flagColBox[3][5] == 1 && flagColBox[3][3] == 1 && flagColBox[3][2] == 1) {
 
 
-            if (flagCol1Box4 == 1 && flagCol2Box4 == 1 && flagCol4Box4 == 1 && flagCol5Box4 == 1) {
-                winner = win(col3Box4, col1Box4, col2Box4, col4Box4, col5Box4)
+            if (flagColBox[1][4] == 1 && flagColBox[2][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1) {
+                winner = win(colBox[3][4], colBox[1][4], colBox[2][4], colBox[4][4], colBox[5][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box4 == 1 && flagCol5Box4 == 1 && flagCol4Box4 == 1 && flagCol2Box4 == 1) {
-                winner = win(col3Box4, col6Box4, col5Box4, col4Box4, col2Box4)
+            if (flagColBox[6][4] == 1 && flagColBox[5][4] == 1 && flagColBox[4][4] == 1 && flagColBox[2][4] == 1) {
+                winner = win(colBox[3][4], colBox[6][4], colBox[5][4], colBox[4][4], colBox[2][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box2 == 1 && flagCol2Box3 == 1 && flagCol4Box5 == 1 && flagCol5Box6 == 1) {
-                winner = win(col3Box4, col1Box2, col2Box3, col4Box5, col5Box6)
+            if (flagColBox[1][2] == 1 && flagColBox[2][3] == 1 && flagColBox[4][5] == 1 && flagColBox[5][6] == 1) {
+                winner = win(colBox[3][4], colBox[1][2], colBox[2][3], colBox[4][5], colBox[5][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box6 == 1 && flagCol2Box5 == 1 && flagCol4Box3 == 1 && flagCol5Box2 == 1) {
-                winner = win(col3Box4, col1Box6, col2Box5, col4Box3, col5Box2)
+            if (flagColBox[1][6] == 1 && flagColBox[2][5] == 1 && flagColBox[4][3] == 1 && flagColBox[5][2] == 1) {
+                winner = win(colBox[3][4], colBox[1][6], colBox[2][5], colBox[4][3], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box1 == 1 && flagCol5Box2 == 1 && flagCol4Box3 == 1 && flagCol2Box5 == 1) {
-                winner = win(col3Box4, col6Box1, col5Box2, col4Box3, col2Box5)
+            if (flagColBox[6][1] == 1 && flagColBox[5][2] == 1 && flagColBox[4][3] == 1 && flagColBox[2][5] == 1) {
+                winner = win(colBox[3][4], colBox[6][1], colBox[5][2], colBox[4][3], colBox[2][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol3Box1 == 1 && flagCol3Box2 == 1 && flagCol3Box3 == 1 && flagCol3Box5 == 1) {
-                winner = win(col3Box4, col3Box1, col3Box2, col3Box3, col3Box5)
+            if (flagColBox[3][1] == 1 && flagColBox[3][2] == 1 && flagColBox[3][3] == 1 && flagColBox[3][5] == 1) {
+                winner = win(colBox[3][4], colBox[3][1], colBox[3][2], colBox[3][3], colBox[3][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol3Box6 == 1 && flagCol3Box5 == 1 && flagCol3Box3 == 1 && flagCol3Box2 == 1) {
-                winner = win(col3Box4, col3Box6, col3Box5, col3Box3, col3Box2)
+            if (flagColBox[3][6] == 1 && flagColBox[3][5] == 1 && flagColBox[3][3] == 1 && flagColBox[3][2] == 1) {
+                winner = win(colBox[3][4], colBox[3][6], colBox[3][5], colBox[3][3], colBox[3][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1128,57 +1078,57 @@ col3Box4.addEventListener("click", function (e) {
 
 
 
-col3Box5.addEventListener("click", function (e) {
+colBox[3][5].addEventListener("click", function (e) {
 
 
-    if (flagCol3Box5 === 0) {
+    if (flagColBox[3][5] === 0) {
 
-        print(col3Box5)
+        print(colBox[3][5])
 
 
-        flagCol3Box5 = 1
+        flagColBox[3][5] = 1
 
         tieArray[16] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box5 == 1 && flagCol2Box5 == 1 && flagCol4Box5 == 1 && flagCol5Box5 == 1 ||
-            flagCol6Box5 == 1 && flagCol2Box5 == 1 && flagCol4Box5 == 1 && flagCol5Box5 == 1 ||
-            flagCol2Box6 == 1 && flagCol4Box4 == 1 && flagCol5Box3 == 1 && flagCol6Box2 == 1 ||
-            flagCol3Box1 == 1 && flagCol3Box2 == 1 && flagCol3Box3 == 1 && flagCol3Box4 == 1 ||
-            flagCol3Box6 == 1 && flagCol3Box2 == 1 && flagCol3Box3 == 1 && flagCol3Box4 == 1) {
+        if (flagColBox[1][5] == 1 && flagColBox[2][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[6][5] == 1 && flagColBox[2][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[2][6] == 1 && flagColBox[4][4] == 1 && flagColBox[5][3] == 1 && flagColBox[6][2] == 1 ||
+            flagColBox[3][1] == 1 && flagColBox[3][2] == 1 && flagColBox[3][3] == 1 && flagColBox[3][4] == 1 ||
+            flagColBox[3][6] == 1 && flagColBox[3][2] == 1 && flagColBox[3][3] == 1 && flagColBox[3][4] == 1) {
 
-            if (flagCol1Box5 == 1 && flagCol2Box5 == 1 && flagCol4Box5 == 1 && flagCol5Box5 == 1) {
-                winner = win(col3Box5, col1Box5, col2Box5, col4Box5, col5Box5)
+            if (flagColBox[1][5] == 1 && flagColBox[2][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[3][5], colBox[1][5], colBox[2][5], colBox[4][5], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box5 == 1 && flagCol2Box5 == 1 && flagCol4Box5 == 1 && flagCol5Box5 == 1) {
-                winner = win(col3Box5, col6Box5, col2Box5, col4Box5, col5Box5)
+            if (flagColBox[6][5] == 1 && flagColBox[2][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[3][5], colBox[6][5], colBox[2][5], colBox[4][5], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box6 == 1 && flagCol4Box4 == 1 && flagCol5Box3 == 1 && flagCol6Box2 == 1) {
-                winner = win(col3Box5, col2Box6, col4Box4, col5Box3, col6Box2)
+            if (flagColBox[2][6] == 1 && flagColBox[4][4] == 1 && flagColBox[5][3] == 1 && flagColBox[6][2] == 1) {
+                winner = win(colBox[3][5], colBox[2][6], colBox[4][4], colBox[5][3], colBox[6][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol3Box1 == 1 && flagCol3Box2 == 1 && flagCol3Box3 == 1 && flagCol3Box4 == 1) {
-                winner = win(col3Box5, col3Box1, col3Box2, col3Box3, col3Box4)
+            if (flagColBox[3][1] == 1 && flagColBox[3][2] == 1 && flagColBox[3][3] == 1 && flagColBox[3][4] == 1) {
+                winner = win(colBox[3][5], colBox[3][1], colBox[3][2], colBox[3][3], colBox[3][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol3Box6 == 1 && flagCol3Box2 == 1 && flagCol3Box3 == 1 && flagCol3Box4 == 1) {
-                winner = win(col3Box5, col3Box6, col3Box2, col3Box3, col3Box4)
+            if (flagColBox[3][6] == 1 && flagColBox[3][2] == 1 && flagColBox[3][3] == 1 && flagColBox[3][4] == 1) {
+                winner = win(colBox[3][5], colBox[3][6], colBox[3][2], colBox[3][3], colBox[3][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1195,41 +1145,41 @@ col3Box5.addEventListener("click", function (e) {
 
 
 
-col3Box6.addEventListener("click", function (e) {
+colBox[3][6].addEventListener("click", function (e) {
 
 
-    if (flagCol3Box6 === 0) {
+    if (flagColBox[3][6] === 0) {
 
-        print(col3Box6)
+        print(colBox[3][6])
 
 
-        flagCol3Box6 = 1
+        flagColBox[3][6] = 1
 
         tieArray[17] = 1
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box6 == 1 && flagCol2Box6 == 1 && flagCol4Box6 == 1 && flagCol5Box6 == 1 ||
-            flagCol6Box6 == 1 && flagCol2Box6 == 1 && flagCol4Box6 == 1 && flagCol5Box6 == 1 ||
-            flagCol3Box5 == 1 && flagCol3Box2 == 1 && flagCol3Box3 == 1 && flagCol3Box4 == 1) {
+        if (flagColBox[1][6] == 1 && flagColBox[2][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1 ||
+            flagColBox[6][6] == 1 && flagColBox[2][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1 ||
+            flagColBox[3][5] == 1 && flagColBox[3][2] == 1 && flagColBox[3][3] == 1 && flagColBox[3][4] == 1) {
 
-            if (flagCol1Box6 == 1 && flagCol2Box6 == 1 && flagCol4Box6 == 1 && flagCol5Box6 == 1) {
-                winner = win(col3Box6, col1Box6, col2Box6, col4Box6, col5Box6)
+            if (flagColBox[1][6] == 1 && flagColBox[2][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1) {
+                winner = win(colBox[3][6], colBox[1][6], colBox[2][6], colBox[4][6], colBox[5][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box6 == 1 && flagCol2Box6 == 1 && flagCol4Box6 == 1 && flagCol5Box6 == 1) {
-                winner = win(col3Box6, col6Box6, col2Box6, col4Box6, col5Box6)
+            if (flagColBox[6][6] == 1 && flagColBox[2][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1) {
+                winner = win(colBox[3][6], colBox[6][6], colBox[2][6], colBox[4][6], colBox[5][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
 
-            if (flagCol3Box5 == 1 && flagCol3Box2 == 1 && flagCol3Box3 == 1 && flagCol3Box4 == 1) {
-                winner = win(col3Box6, col3Box5, col3Box2, col3Box3, col3Box4)
+            if (flagColBox[3][5] == 1 && flagColBox[3][2] == 1 && flagColBox[3][3] == 1 && flagColBox[3][4] == 1) {
+                winner = win(colBox[3][6], colBox[3][5], colBox[3][2], colBox[3][3], colBox[3][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1246,41 +1196,41 @@ col3Box6.addEventListener("click", function (e) {
 
 
 
-col4Box1.addEventListener("click", function (e) {
+colBox[4][1].addEventListener("click", function (e) {
 
 
-    if (flagCol4Box1 === 0) {
+    if (flagColBox[4][1] === 0) {
 
-        print(col4Box1)
+        print(colBox[4][1])
 
-        flagCol4Box1 = 1
+        flagColBox[4][1] = 1
 
         tieArray[18] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box1 == 1 && flagCol2Box1 == 1 && flagCol3Box1 == 1 && flagCol5Box1 == 1 ||
-            flagCol6Box1 == 1 && flagCol3Box1 == 1 && flagCol2Box1 == 1 && flagCol5Box1 == 1 ||
-            flagCol4Box2 == 1 && flagCol4Box3 == 1 && flagCol4Box4 == 1 && flagCol4Box5 == 1) {
+        if (flagColBox[1][1] == 1 && flagColBox[2][1] == 1 && flagColBox[3][1] == 1 && flagColBox[5][1] == 1 ||
+            flagColBox[6][1] == 1 && flagColBox[3][1] == 1 && flagColBox[2][1] == 1 && flagColBox[5][1] == 1 ||
+            flagColBox[4][2] == 1 && flagColBox[4][3] == 1 && flagColBox[4][4] == 1 && flagColBox[4][5] == 1) {
 
-            if (flagCol1Box1 == 1 && flagCol2Box1 == 1 && flagCol3Box1 == 1 && flagCol5Box1 == 1) {
-                winner = win(col4Box1, col1Box1, col2Box1, col3Box1, col5Box1)
+            if (flagColBox[1][1] == 1 && flagColBox[2][1] == 1 && flagColBox[3][1] == 1 && flagColBox[5][1] == 1) {
+                winner = win(colBox[4][1], colBox[1][1], colBox[2][1], colBox[3][1], colBox[5][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box1 == 1 && flagCol3Box1 == 1 && flagCol2Box1 == 1 && flagCol5Box1 == 1) {
-                winner = win(col4Box1, col6Box1, col3Box1, col2Box1, col5Box1)
+            if (flagColBox[6][1] == 1 && flagColBox[3][1] == 1 && flagColBox[2][1] == 1 && flagColBox[5][1] == 1) {
+                winner = win(colBox[4][1], colBox[6][1], colBox[3][1], colBox[2][1], colBox[5][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
 
-            if (flagCol4Box2 == 1 && flagCol4Box3 == 1 && flagCol4Box4 == 1 && flagCol4Box5 == 1) {
-                winner = win(col4Box1, col4Box2, col4Box3, col4Box4, col4Box5)
+            if (flagColBox[4][2] == 1 && flagColBox[4][3] == 1 && flagColBox[4][4] == 1 && flagColBox[4][5] == 1) {
+                winner = win(colBox[4][1], colBox[4][2], colBox[4][3], colBox[4][4], colBox[4][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1297,57 +1247,57 @@ col4Box1.addEventListener("click", function (e) {
 
 
 
-col4Box2.addEventListener("click", function (e) {
+colBox[4][2].addEventListener("click", function (e) {
 
 
-    if (flagCol4Box2 === 0) {
+    if (flagColBox[4][2] === 0) {
 
-        print(col4Box2)
+        print(colBox[4][2])
 
 
-        flagCol4Box2 = 1
+        flagColBox[4][2] = 1
 
         tieArray[19] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box2 == 1 && flagCol2Box2 == 1 && flagCol3Box2 == 1 && flagCol5Box2 == 1 ||
-            flagCol6Box2 == 1 && flagCol2Box2 == 1 && flagCol3Box2 == 1 && flagCol5Box2 == 1 ||
-            flagCol5Box1 == 1 && flagCol3Box3 == 1 && flagCol2Box4 == 1 && flagCol1Box5 == 1 ||
-            flagCol4Box1 == 1 && flagCol4Box3 == 1 && flagCol4Box4 == 1 && flagCol4Box5 == 1 ||
-            flagCol4Box3 == 1 && flagCol4Box4 == 1 && flagCol4Box5 == 1 && flagCol4Box6 == 1) {
+        if (flagColBox[1][2] == 1 && flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[6][2] == 1 && flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[5][1] == 1 && flagColBox[3][3] == 1 && flagColBox[2][4] == 1 && flagColBox[1][5] == 1 ||
+            flagColBox[4][1] == 1 && flagColBox[4][3] == 1 && flagColBox[4][4] == 1 && flagColBox[4][5] == 1 ||
+            flagColBox[4][3] == 1 && flagColBox[4][4] == 1 && flagColBox[4][5] == 1 && flagColBox[4][6] == 1) {
 
-            if (flagCol1Box2 == 1 && flagCol2Box2 == 1 && flagCol3Box2 == 1 && flagCol5Box2 == 1) {
-                winner = win(col4Box2, col1Box2, col2Box2, col3Box2, col5Box2)
+            if (flagColBox[1][2] == 1 && flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[5][2] == 1) {
+                winner = win(colBox[4][2], colBox[1][2], colBox[2][2], colBox[3][2], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box2 == 1 && flagCol2Box2 == 1 && flagCol3Box2 == 1 && flagCol5Box2 == 1) {
-                winner = win(col4Box2, col6Box2, col2Box2, col3Box2, col5Box2)
+            if (flagColBox[6][2] == 1 && flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[5][2] == 1) {
+                winner = win(colBox[4][2], colBox[6][2], colBox[2][2], colBox[3][2], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box1 == 1 && flagCol3Box3 == 1 && flagCol2Box4 == 1 && flagCol1Box5 == 1) {
-                winner = win(col4Box2, col5Box1, col3Box3, col2Box4, col1Box5)
+            if (flagColBox[5][1] == 1 && flagColBox[3][3] == 1 && flagColBox[2][4] == 1 && flagColBox[1][5] == 1) {
+                winner = win(colBox[4][2], colBox[5][1], colBox[3][3], colBox[2][4], colBox[1][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol4Box1 == 1 && flagCol4Box3 == 1 && flagCol4Box4 == 1 && flagCol4Box5 == 1) {
-                winner = win(col4Box2, col4Box1, col4Box3, col4Box4, col4Box5)
+            if (flagColBox[4][1] == 1 && flagColBox[4][3] == 1 && flagColBox[4][4] == 1 && flagColBox[4][5] == 1) {
+                winner = win(colBox[4][2], colBox[4][1], colBox[4][3], colBox[4][4], colBox[4][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol4Box3 == 1 && flagCol4Box4 == 1 && flagCol4Box5 == 1 && flagCol4Box6 == 1) {
-                winner = win(col4Box2, col4Box3, col4Box4, col4Box5, col4Box6)
+            if (flagColBox[4][3] == 1 && flagColBox[4][4] == 1 && flagColBox[4][5] == 1 && flagColBox[4][6] == 1) {
+                winner = win(colBox[4][2], colBox[4][3], colBox[4][4], colBox[4][5], colBox[4][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1362,74 +1312,74 @@ col4Box2.addEventListener("click", function (e) {
 
 
 
-col4Box3.addEventListener("click", function (e) {
+colBox[4][3].addEventListener("click", function (e) {
 
 
-    if (flagCol4Box3 === 0) {
+    if (flagColBox[4][3] === 0) {
 
-        print(col4Box3)
+        print(colBox[4][3])
 
 
-        flagCol4Box3 = 1
+        flagColBox[4][3] = 1
 
         tieArray[20] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box3 == 1 && flagCol2Box3 == 1 && flagCol3Box3 == 1 && flagCol5Box3 == 1 ||
-            flagCol6Box3 == 1 && flagCol2Box3 == 1 && flagCol3Box3 == 1 && flagCol5Box3 == 1 ||
-            flagCol2Box1 == 1 && flagCol3Box2 == 1 && flagCol5Box4 == 1 && flagCol6Box5 == 1 ||
-            flagCol1Box6 == 1 && flagCol2Box5 == 1 && flagCol3Box4 == 1 && flagCol5Box2 == 1 ||
-            flagCol6Box1 == 1 && flagCol2Box5 == 1 && flagCol3Box4 == 1 && flagCol5Box2 == 1 ||
-            flagCol4Box1 == 1 && flagCol4Box2 == 1 && flagCol4Box4 == 1 && flagCol4Box5 == 1 ||
-            flagCol4Box6 == 1 && flagCol4Box5 == 1 && flagCol4Box4 == 1 && flagCol4Box2 == 1) {
+        if (flagColBox[1][3] == 1 && flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[5][3] == 1 ||
+            flagColBox[6][3] == 1 && flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[5][3] == 1 ||
+            flagColBox[2][1] == 1 && flagColBox[3][2] == 1 && flagColBox[5][4] == 1 && flagColBox[6][5] == 1 ||
+            flagColBox[1][6] == 1 && flagColBox[2][5] == 1 && flagColBox[3][4] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[6][1] == 1 && flagColBox[2][5] == 1 && flagColBox[3][4] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[4][1] == 1 && flagColBox[4][2] == 1 && flagColBox[4][4] == 1 && flagColBox[4][5] == 1 ||
+            flagColBox[4][6] == 1 && flagColBox[4][5] == 1 && flagColBox[4][4] == 1 && flagColBox[4][2] == 1) {
 
 
-            if (flagCol1Box3 == 1 && flagCol2Box3 == 1 && flagCol3Box3 == 1 && flagCol5Box3 == 1) {
-                winner = win(col4Box3, col1Box3, col2Box3, col3Box3, col5Box3)
+            if (flagColBox[1][3] == 1 && flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[5][3] == 1) {
+                winner = win(colBox[4][3], colBox[1][3], colBox[2][3], colBox[3][3], colBox[5][3])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box3 == 1 && flagCol2Box3 == 1 && flagCol3Box3 == 1 && flagCol5Box3 == 1) {
-                winner = win(col4Box3, col6Box3, col2Box3, col3Box3, col5Box3)
+            if (flagColBox[6][3] == 1 && flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[5][3] == 1) {
+                winner = win(colBox[4][3], colBox[6][3], colBox[2][3], colBox[3][3], colBox[5][3])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box1 == 1 && flagCol3Box2 == 1 && flagCol5Box4 == 1 && flagCol6Box5 == 1) {
-                winner = win(col4Box3, col2Box1, col3Box2, col5Box4, col6Box5)
+            if (flagColBox[2][1] == 1 && flagColBox[3][2] == 1 && flagColBox[5][4] == 1 && flagColBox[6][5] == 1) {
+                winner = win(colBox[4][3], colBox[2][1], colBox[3][2], colBox[5][4], colBox[6][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box6 == 1 && flagCol2Box5 == 1 && flagCol3Box4 == 1 && flagCol5Box2 == 1) {
-                winner = win(col4Box3, col1Box6, col2Box5, col3Box4, col5Box2)
+            if (flagColBox[1][6] == 1 && flagColBox[2][5] == 1 && flagColBox[3][4] == 1 && flagColBox[5][2] == 1) {
+                winner = win(colBox[4][3], colBox[1][6], colBox[2][5], colBox[3][4], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box1 == 1 && flagCol2Box5 == 1 && flagCol3Box4 == 1 && flagCol5Box2 == 1) {
-                winner = win(col4Box3, col6Box1, col2Box5, col3Box4, col5Box2)
+            if (flagColBox[6][1] == 1 && flagColBox[2][5] == 1 && flagColBox[3][4] == 1 && flagColBox[5][2] == 1) {
+                winner = win(colBox[4][3], colBox[6][1], colBox[2][5], colBox[3][4], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol4Box1 == 1 && flagCol4Box2 == 1 && flagCol4Box4 == 1 && flagCol4Box5 == 1) {
-                winner = win(col4Box3, col4Box1, col4Box2, col4Box4, col4Box5)
+            if (flagColBox[4][1] == 1 && flagColBox[4][2] == 1 && flagColBox[4][4] == 1 && flagColBox[4][5] == 1) {
+                winner = win(colBox[4][3], colBox[4][1], colBox[4][2], colBox[4][4], colBox[4][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol4Box6 == 1 && flagCol4Box5 == 1 && flagCol4Box4 == 1 && flagCol4Box2 == 1) {
-                winner = win(col4Box3, col4Box6, col4Box5, col4Box4, col4Box2)
+            if (flagColBox[4][6] == 1 && flagColBox[4][5] == 1 && flagColBox[4][4] == 1 && flagColBox[4][2] == 1) {
+                winner = win(colBox[4][3], colBox[4][6], colBox[4][5], colBox[4][4], colBox[4][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1444,72 +1394,72 @@ col4Box3.addEventListener("click", function (e) {
 
 
 
-col4Box4.addEventListener("click", function (e) {
+colBox[4][4].addEventListener("click", function (e) {
 
 
-    if (flagCol4Box4 === 0) {
+    if (flagColBox[4][4] === 0) {
 
-        print(col4Box4)
+        print(colBox[4][4])
 
 
-        flagCol4Box4 = 1
+        flagColBox[4][4] = 1
 
         tieArray[21] = 1
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box4 == 1 && flagCol2Box4 == 1 && flagCol3Box4 == 1 && flagCol5Box4 == 1 ||
-            flagCol6Box4 == 1 && flagCol2Box4 == 1 && flagCol3Box4 == 1 && flagCol5Box4 == 1 ||
-            flagCol2Box6 == 1 && flagCol3Box5 == 1 && flagCol5Box3 == 1 && flagCol6Box2 == 1 ||
-            flagCol1Box1 == 1 && flagCol2Box2 == 1 && flagCol3Box3 == 1 && flagCol5Box5 == 1 ||
-            flagCol6Box6 == 1 && flagCol2Box2 == 1 && flagCol3Box3 == 1 && flagCol5Box5 == 1 ||
-            flagCol4Box1 == 1 && flagCol4Box2 == 1 && flagCol4Box3 == 1 && flagCol4Box5 == 1 ||
-            flagCol4Box6 == 1 && flagCol4Box5 == 1 && flagCol4Box3 == 1 && flagCol4Box2 == 1) {
+        if (flagColBox[1][4] == 1 && flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[5][4] == 1 ||
+            flagColBox[6][4] == 1 && flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[5][4] == 1 ||
+            flagColBox[2][6] == 1 && flagColBox[3][5] == 1 && flagColBox[5][3] == 1 && flagColBox[6][2] == 1 ||
+            flagColBox[1][1] == 1 && flagColBox[2][2] == 1 && flagColBox[3][3] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[6][6] == 1 && flagColBox[2][2] == 1 && flagColBox[3][3] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[4][1] == 1 && flagColBox[4][2] == 1 && flagColBox[4][3] == 1 && flagColBox[4][5] == 1 ||
+            flagColBox[4][6] == 1 && flagColBox[4][5] == 1 && flagColBox[4][3] == 1 && flagColBox[4][2] == 1) {
 
-            if (flagCol1Box4 == 1 && flagCol2Box4 == 1 && flagCol3Box4 == 1 && flagCol5Box4 == 1) {
-                winner = win(col4Box4, col1Box4, col2Box4, col3Box4, col5Box4)
+            if (flagColBox[1][4] == 1 && flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[5][4] == 1) {
+                winner = win(colBox[4][4], colBox[1][4], colBox[2][4], colBox[3][4], colBox[5][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box4 == 1 && flagCol2Box4 == 1 && flagCol3Box4 == 1 && flagCol5Box4 == 1) {
-                winner = win(col4Box4, col6Box4, col2Box4, col3Box4, col5Box4)
+            if (flagColBox[6][4] == 1 && flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[5][4] == 1) {
+                winner = win(colBox[4][4], colBox[6][4], colBox[2][4], colBox[3][4], colBox[5][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box6 == 1 && flagCol3Box5 == 1 && flagCol5Box3 == 1 && flagCol6Box2 == 1) {
-                winner = win(col4Box4, col2Box6, col3Box5, col5Box3, col6Box2)
+            if (flagColBox[2][6] == 1 && flagColBox[3][5] == 1 && flagColBox[5][3] == 1 && flagColBox[6][2] == 1) {
+                winner = win(colBox[4][4], colBox[2][6], colBox[3][5], colBox[5][3], colBox[6][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box1 == 1 && flagCol2Box2 == 1 && flagCol3Box3 == 1 && flagCol5Box5 == 1) {
-                winner = win(col4Box4, col1Box1, col2Box2, col3Box3, col5Box5)
+            if (flagColBox[1][1] == 1 && flagColBox[2][2] == 1 && flagColBox[3][3] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[4][4], colBox[1][1], colBox[2][2], colBox[3][3], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box6 == 1 && flagCol2Box2 == 1 && flagCol3Box3 == 1 && flagCol5Box5 == 1) {
-                winner = win(col4Box4, col6Box6, col2Box2, col3Box3, col5Box5)
+            if (flagColBox[6][6] == 1 && flagColBox[2][2] == 1 && flagColBox[3][3] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[4][4], colBox[6][6], colBox[2][2], colBox[3][3], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol4Box1 == 1 && flagCol4Box2 == 1 && flagCol4Box3 == 1 && flagCol4Box5 == 1) {
-                winner = win(col4Box4, col4Box1, col4Box2, col4Box3, col4Box5)
+            if (flagColBox[4][1] == 1 && flagColBox[4][2] == 1 && flagColBox[4][3] == 1 && flagColBox[4][5] == 1) {
+                winner = win(colBox[4][4], colBox[4][1], colBox[4][2], colBox[4][3], colBox[4][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol4Box6 == 1 && flagCol4Box5 == 1 && flagCol4Box3 == 1 && flagCol4Box2 == 1) {
-                winner = win(col4Box4, col4Box6, col4Box5, col4Box3, col4Box2)
+            if (flagColBox[4][6] == 1 && flagColBox[4][5] == 1 && flagColBox[4][3] == 1 && flagColBox[4][2] == 1) {
+                winner = win(colBox[4][4], colBox[4][6], colBox[4][5], colBox[4][3], colBox[4][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1526,57 +1476,57 @@ col4Box4.addEventListener("click", function (e) {
 
 
 
-col4Box5.addEventListener("click", function (e) {
+colBox[4][5].addEventListener("click", function (e) {
 
 
-    if (flagCol4Box5 === 0) {
+    if (flagColBox[4][5] === 0) {
 
-        print(col4Box5)
+        print(colBox[4][5])
 
 
-        flagCol4Box5 = 1
+        flagColBox[4][5] = 1
 
         tieArray[22] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box5 == 1 && flagCol2Box5 == 1 && flagCol3Box5 == 1 && flagCol5Box5 == 1 ||
-            flagCol6Box5 == 1 && flagCol2Box5 == 1 && flagCol3Box5 == 1 && flagCol5Box5 == 1 ||
-            flagCol1Box2 == 1 && flagCol2Box3 == 1 && flagCol3Box4 == 1 && flagCol5Box6 == 1 ||
-            flagCol4Box1 == 1 && flagCol4Box2 == 1 && flagCol4Box3 == 1 && flagCol4Box4 == 1 ||
-            flagCol4Box6 == 1 && flagCol4Box4 == 1 && flagCol4Box3 == 1 && flagCol4Box2 == 1) {
+        if (flagColBox[1][5] == 1 && flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[6][5] == 1 && flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[1][2] == 1 && flagColBox[2][3] == 1 && flagColBox[3][4] == 1 && flagColBox[5][6] == 1 ||
+            flagColBox[4][1] == 1 && flagColBox[4][2] == 1 && flagColBox[4][3] == 1 && flagColBox[4][4] == 1 ||
+            flagColBox[4][6] == 1 && flagColBox[4][4] == 1 && flagColBox[4][3] == 1 && flagColBox[4][2] == 1) {
 
-            if (flagCol1Box5 == 1 && flagCol2Box5 == 1 && flagCol3Box5 == 1 && flagCol5Box5 == 1) {
-                winner = win(col4Box5, col1Box5, col2Box5, col3Box5, col5Box5)
+            if (flagColBox[1][5] == 1 && flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[4][5], colBox[1][5], colBox[2][5], colBox[3][5], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box5 == 1 && flagCol2Box5 == 1 && flagCol3Box5 == 1 && flagCol5Box5 == 1) {
-                winner = win(col4Box5, col6Box5, col2Box5, col3Box5, col5Box5)
+            if (flagColBox[6][5] == 1 && flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[4][5], colBox[6][5], colBox[2][5], colBox[3][5], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box2 == 1 && flagCol2Box3 == 1 && flagCol3Box4 == 1 && flagCol5Box6 == 1) {
-                winner = win(col4Box5, col1Box2, col2Box3, col3Box4, col5Box6)
+            if (flagColBox[1][2] == 1 && flagColBox[2][3] == 1 && flagColBox[3][4] == 1 && flagColBox[5][6] == 1) {
+                winner = win(colBox[4][5], colBox[1][2], colBox[2][3], colBox[3][4], colBox[5][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol4Box1 == 1 && flagCol4Box2 == 1 && flagCol4Box3 == 1 && flagCol4Box4 == 1) {
-                winner = win(col4Box5, col4Box1, col4Box2, col4Box3, col4Box4)
+            if (flagColBox[4][1] == 1 && flagColBox[4][2] == 1 && flagColBox[4][3] == 1 && flagColBox[4][4] == 1) {
+                winner = win(colBox[4][5], colBox[4][1], colBox[4][2], colBox[4][3], colBox[4][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol4Box6 == 1 && flagCol4Box4 == 1 && flagCol4Box3 == 1 && flagCol4Box2 == 1) {
-                winner = win(col4Box5, col4Box6, col4Box4, col4Box3, col4Box2)
+            if (flagColBox[4][6] == 1 && flagColBox[4][4] == 1 && flagColBox[4][3] == 1 && flagColBox[4][2] == 1) {
+                winner = win(colBox[4][5], colBox[4][6], colBox[4][4], colBox[4][3], colBox[4][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1592,40 +1542,40 @@ col4Box5.addEventListener("click", function (e) {
 
 
 
-col4Box6.addEventListener("click", function (e) {
+colBox[4][6].addEventListener("click", function (e) {
 
 
-    if (flagCol4Box6 === 0) {
+    if (flagColBox[4][6] === 0) {
 
-        print(col4Box6)
+        print(colBox[4][6])
 
 
-        flagCol4Box6 = 1
+        flagColBox[4][6] = 1
 
         tieArray[23] = 1
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box6 == 1 && flagCol2Box6 == 1 && flagCol3Box6 == 1 && flagCol5Box6 == 1 ||
-            flagCol6Box6 == 1 && flagCol2Box6 == 1 && flagCol3Box6 == 1 && flagCol5Box6 == 1 ||
-            flagCol4Box5 == 1 && flagCol4Box4 == 1 && flagCol4Box3 == 1 && flagCol4Box2 == 1) {
+        if (flagColBox[1][6] == 1 && flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[5][6] == 1 ||
+            flagColBox[6][6] == 1 && flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[5][6] == 1 ||
+            flagColBox[4][5] == 1 && flagColBox[4][4] == 1 && flagColBox[4][3] == 1 && flagColBox[4][2] == 1) {
 
-            if (flagCol1Box6 == 1 && flagCol2Box6 == 1 && flagCol3Box6 == 1 && flagCol5Box6 == 1) {
-                winner = win(col4Box6, col1Box6, col2Box6, col3Box6, col5Box6)
+            if (flagColBox[1][6] == 1 && flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[5][6] == 1) {
+                winner = win(colBox[4][6], colBox[1][6], colBox[2][6], colBox[3][6], colBox[5][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box6 == 1 && flagCol2Box6 == 1 && flagCol3Box6 == 1 && flagCol5Box6 == 1) {
-                winner = win(col4Box6, col6Box6, col2Box6, col3Box6, col5Box6)
+            if (flagColBox[6][6] == 1 && flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[5][6] == 1) {
+                winner = win(colBox[4][6], colBox[6][6], colBox[2][6], colBox[3][6], colBox[5][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol4Box5 == 1 && flagCol4Box4 == 1 && flagCol4Box3 == 1 && flagCol4Box2 == 1) {
-                winner = win(col4Box6, col4Box5, col4Box4, col4Box3, col4Box2)
+            if (flagColBox[4][5] == 1 && flagColBox[4][4] == 1 && flagColBox[4][3] == 1 && flagColBox[4][2] == 1) {
+                winner = win(colBox[4][6], colBox[4][5], colBox[4][4], colBox[4][3], colBox[4][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1645,50 +1595,50 @@ col4Box6.addEventListener("click", function (e) {
 
 
 
-col5Box1.addEventListener("click", function (e) {
+colBox[5][1].addEventListener("click", function (e) {
 
 
-    if (flagCol5Box1 === 0) {
+    if (flagColBox[5][1] === 0) {
 
-        print(col5Box1)
+        print(colBox[5][1])
 
 
-        flagCol5Box1 = 1
+        flagColBox[5][1] = 1
 
         tieArray[24] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box1 == 1 && flagCol2Box1 == 1 && flagCol3Box1 == 1 && flagCol4Box1 == 1 ||
-            flagCol6Box1 == 1 && flagCol2Box1 == 1 && flagCol3Box1 == 1 && flagCol4Box1 == 1 ||
-            flagCol1Box5 == 1 && flagCol2Box4 == 1 && flagCol3Box3 == 1 && flagCol4Box2 == 1 ||
-            flagCol5Box2 == 1 && flagCol5Box3 == 1 && flagCol5Box4 == 1 && flagCol5Box5 == 1) {
+        if (flagColBox[1][1] == 1 && flagColBox[2][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 ||
+            flagColBox[6][1] == 1 && flagColBox[2][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 ||
+            flagColBox[1][5] == 1 && flagColBox[2][4] == 1 && flagColBox[3][3] == 1 && flagColBox[4][2] == 1 ||
+            flagColBox[5][2] == 1 && flagColBox[5][3] == 1 && flagColBox[5][4] == 1 && flagColBox[5][5] == 1) {
 
 
-            if (flagCol1Box1 == 1 && flagCol2Box1 == 1 && flagCol3Box1 == 1 && flagCol4Box1 == 1) {
-                winner = win(col5Box1, col1Box1, col2Box1, col3Box1, col4Box1)
+            if (flagColBox[1][1] == 1 && flagColBox[2][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1) {
+                winner = win(colBox[5][1], colBox[1][1], colBox[2][1], colBox[3][1], colBox[4][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box1 == 1 && flagCol2Box1 == 1 && flagCol3Box1 == 1 && flagCol4Box1 == 1) {
-                winner = win(col5Box1, col6Box1, col2Box1, col3Box1, col4Box1)
+            if (flagColBox[6][1] == 1 && flagColBox[2][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1) {
+                winner = win(colBox[5][1], colBox[6][1], colBox[2][1], colBox[3][1], colBox[4][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box5 == 1 && flagCol2Box4 == 1 && flagCol3Box3 == 1 && flagCol4Box2 == 1) {
-                winner = win(col5Box1, col1Box5, col2Box4, col3Box3, col4Box2)
+            if (flagColBox[1][5] == 1 && flagColBox[2][4] == 1 && flagColBox[3][3] == 1 && flagColBox[4][2] == 1) {
+                winner = win(colBox[5][1], colBox[1][5], colBox[2][4], colBox[3][3], colBox[4][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box2 == 1 && flagCol5Box3 == 1 && flagCol5Box4 == 1 && flagCol5Box5 == 1) {
-                winner = win(col5Box1, col5Box2, col5Box3, col5Box4, col5Box5)
+            if (flagColBox[5][2] == 1 && flagColBox[5][3] == 1 && flagColBox[5][4] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[5][1], colBox[5][2], colBox[5][3], colBox[5][4], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1703,65 +1653,65 @@ col5Box1.addEventListener("click", function (e) {
 
 
 
-col5Box2.addEventListener("click", function (e) {
+colBox[5][2].addEventListener("click", function (e) {
 
 
-    if (flagCol5Box2 === 0) {
+    if (flagColBox[5][2] === 0) {
 
-        print(col5Box2)
+        print(colBox[5][2])
 
 
-        flagCol5Box2 = 1
+        flagColBox[5][2] = 1
 
         tieArray[25] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box2 == 1 && flagCol2Box2 == 1 && flagCol3Box2 == 1 && flagCol4Box2 == 1 ||
-            flagCol6Box2 == 1 && flagCol2Box2 == 1 && flagCol3Box2 == 1 && flagCol4Box2 == 1 ||
-            flagCol6Box1 == 1 && flagCol4Box3 == 1 && flagCol3Box4 == 1 && flagCol2Box5 == 1 ||
-            flagCol1Box6 == 1 && flagCol2Box5 == 1 && flagCol3Box4 == 1 && flagCol4Box3 == 1 ||
-            flagCol5Box1 == 1 && flagCol5Box3 == 1 && flagCol5Box4 == 1 && flagCol5Box5 == 1 ||
-            flagCol5Box6 == 1 && flagCol5Box3 == 1 && flagCol5Box4 == 1 && flagCol5Box5 == 1) {
+        if (flagColBox[1][2] == 1 && flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 ||
+            flagColBox[6][2] == 1 && flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 ||
+            flagColBox[6][1] == 1 && flagColBox[4][3] == 1 && flagColBox[3][4] == 1 && flagColBox[2][5] == 1 ||
+            flagColBox[1][6] == 1 && flagColBox[2][5] == 1 && flagColBox[3][4] == 1 && flagColBox[4][3] == 1 ||
+            flagColBox[5][1] == 1 && flagColBox[5][3] == 1 && flagColBox[5][4] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[5][6] == 1 && flagColBox[5][3] == 1 && flagColBox[5][4] == 1 && flagColBox[5][5] == 1) {
 
-            if (flagCol1Box2 == 1 && flagCol2Box2 == 1 && flagCol3Box2 == 1 && flagCol4Box2 == 1) {
-                winner = win(col5Box2, col1Box2, col2Box2, col3Box2, col4Box2)
+            if (flagColBox[1][2] == 1 && flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1) {
+                winner = win(colBox[5][2], colBox[1][2], colBox[2][2], colBox[3][2], colBox[4][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box2 == 1 && flagCol2Box2 == 1 && flagCol3Box2 == 1 && flagCol4Box2 == 1) {
-                winner = win(col5Box2, col6Box2, col2Box2, col3Box2, col4Box2)
+            if (flagColBox[6][2] == 1 && flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1) {
+                winner = win(colBox[5][2], colBox[6][2], colBox[2][2], colBox[3][2], colBox[4][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box1 == 1 && flagCol4Box3 == 1 && flagCol3Box4 == 1 && flagCol2Box5 == 1) {
-                winner = win(col5Box2, col6Box1, col4Box3, col3Box4, col2Box5)
+            if (flagColBox[6][1] == 1 && flagColBox[4][3] == 1 && flagColBox[3][4] == 1 && flagColBox[2][5] == 1) {
+                winner = win(colBox[5][2], colBox[6][1], colBox[4][3], colBox[3][4], colBox[2][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box6 == 1 && flagCol2Box5 == 1 && flagCol3Box4 == 1 && flagCol4Box3 == 1) {
-                winner = win(col5Box2, col1Box6, col2Box5, col3Box4, col4Box3)
+            if (flagColBox[1][6] == 1 && flagColBox[2][5] == 1 && flagColBox[3][4] == 1 && flagColBox[4][3] == 1) {
+                winner = win(colBox[5][2], colBox[1][6], colBox[2][5], colBox[3][4], colBox[4][3])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box1 == 1 && flagCol5Box3 == 1 && flagCol5Box4 == 1 && flagCol5Box5 == 1) {
-                winner = win(col5Box2, col5Box1, col5Box3, col5Box4, col5Box5)
+            if (flagColBox[5][1] == 1 && flagColBox[5][3] == 1 && flagColBox[5][4] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[5][2], colBox[5][1], colBox[5][3], colBox[5][4], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box6 == 1 && flagCol5Box3 == 1 && flagCol5Box4 == 1 && flagCol5Box5 == 1) {
-                winner = win(col5Box2, col5Box6, col5Box3, col5Box4, col5Box5)
+            if (flagColBox[5][6] == 1 && flagColBox[5][3] == 1 && flagColBox[5][4] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[5][2], colBox[5][6], colBox[5][3], colBox[5][4], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1775,58 +1725,58 @@ col5Box2.addEventListener("click", function (e) {
 
 
 
-col5Box3.addEventListener("click", function (e) {
+colBox[5][3].addEventListener("click", function (e) {
 
 
-    if (flagCol5Box3 === 0) {
+    if (flagColBox[5][3] === 0) {
 
-        print(col5Box3)
+        print(colBox[5][3])
 
 
-        flagCol5Box3 = 1
+        flagColBox[5][3] = 1
 
         tieArray[26] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box3 == 1 && flagCol2Box3 == 1 && flagCol3Box3 == 1 && flagCol4Box3 == 1 ||
-            flagCol6Box3 == 1 && flagCol2Box3 == 1 && flagCol3Box3 == 1 && flagCol4Box3 == 1 ||
-            flagCol2Box6 == 1 && flagCol3Box5 == 1 && flagCol4Box4 == 1 && flagCol6Box2 == 1 ||
-            flagCol5Box1 == 1 && flagCol5Box2 == 1 && flagCol5Box4 == 1 && flagCol5Box5 == 1 ||
-            flagCol5Box6 == 1 && flagCol5Box2 == 1 && flagCol5Box4 == 1 && flagCol5Box5 == 1) {
+        if (flagColBox[1][3] == 1 && flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 ||
+            flagColBox[6][3] == 1 && flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 ||
+            flagColBox[2][6] == 1 && flagColBox[3][5] == 1 && flagColBox[4][4] == 1 && flagColBox[6][2] == 1 ||
+            flagColBox[5][1] == 1 && flagColBox[5][2] == 1 && flagColBox[5][4] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[5][6] == 1 && flagColBox[5][2] == 1 && flagColBox[5][4] == 1 && flagColBox[5][5] == 1) {
 
 
-            if (flagCol1Box3 == 1 && flagCol2Box3 == 1 && flagCol3Box3 == 1 && flagCol4Box3 == 1) {
-                winner = win(col5Box3, col1Box3, col2Box3, col3Box3, col4Box3)
+            if (flagColBox[1][3] == 1 && flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1) {
+                winner = win(colBox[5][3], colBox[1][3], colBox[2][3], colBox[3][3], colBox[4][3])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box3 == 1 && flagCol2Box3 == 1 && flagCol3Box3 == 1 && flagCol4Box3 == 1) {
-                winner = win(col5Box3, col6Box3, col2Box3, col3Box3, col4Box3)
+            if (flagColBox[6][3] == 1 && flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1) {
+                winner = win(colBox[5][3], colBox[6][3], colBox[2][3], colBox[3][3], colBox[4][3])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box6 == 1 && flagCol3Box5 == 1 && flagCol4Box4 == 1 && flagCol6Box2 == 1) {
-                winner = win(col5Box3, col2Box6, col3Box5, col4Box4, col6Box2)
+            if (flagColBox[2][6] == 1 && flagColBox[3][5] == 1 && flagColBox[4][4] == 1 && flagColBox[6][2] == 1) {
+                winner = win(colBox[5][3], colBox[2][6], colBox[3][5], colBox[4][4], colBox[6][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box1 == 1 && flagCol5Box2 == 1 && flagCol5Box4 == 1 && flagCol5Box5 == 1) {
-                winner = win(col5Box3, col5Box1, col5Box2, col5Box4, col5Box5)
+            if (flagColBox[5][1] == 1 && flagColBox[5][2] == 1 && flagColBox[5][4] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[5][3], colBox[5][1], colBox[5][2], colBox[5][4], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box6 == 1 && flagCol5Box2 == 1 && flagCol5Box4 == 1 && flagCol5Box5 == 1) {
-                winner = win(col5Box3, col5Box6, col5Box2, col5Box4, col5Box5)
+            if (flagColBox[5][6] == 1 && flagColBox[5][2] == 1 && flagColBox[5][4] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[5][3], colBox[5][6], colBox[5][2], colBox[5][4], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1842,57 +1792,57 @@ col5Box3.addEventListener("click", function (e) {
 
 
 
-col5Box4.addEventListener("click", function (e) {
+colBox[5][4].addEventListener("click", function (e) {
 
 
-    if (flagCol5Box4 === 0) {
+    if (flagColBox[5][4] === 0) {
 
-        print(col5Box4)
+        print(colBox[5][4])
 
 
-        flagCol5Box4 = 1
+        flagColBox[5][4] = 1
 
         tieArray[27] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box4 == 1 && flagCol2Box4 == 1 && flagCol3Box4 == 1 && flagCol4Box4 == 1 ||
-            flagCol6Box4 == 1 && flagCol2Box4 == 1 && flagCol3Box4 == 1 && flagCol4Box4 == 1 ||
-            flagCol2Box1 == 1 && flagCol3Box2 == 1 && flagCol4Box3 == 1 && flagCol6Box5 == 1 ||
-            flagCol5Box1 == 1 && flagCol5Box2 == 1 && flagCol5Box3 == 1 && flagCol5Box5 == 1 ||
-            flagCol5Box6 == 1 && flagCol5Box2 == 1 && flagCol5Box3 == 1 && flagCol5Box5 == 1) {
+        if (flagColBox[1][4] == 1 && flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 ||
+            flagColBox[6][4] == 1 && flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 ||
+            flagColBox[2][1] == 1 && flagColBox[3][2] == 1 && flagColBox[4][3] == 1 && flagColBox[6][5] == 1 ||
+            flagColBox[5][1] == 1 && flagColBox[5][2] == 1 && flagColBox[5][3] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[5][6] == 1 && flagColBox[5][2] == 1 && flagColBox[5][3] == 1 && flagColBox[5][5] == 1) {
 
-            if (flagCol1Box4 == 1 && flagCol2Box4 == 1 && flagCol3Box4 == 1 && flagCol4Box4 == 1) {
-                winner = win(col5Box4, col1Box4, col2Box4, col3Box4, col4Box4)
+            if (flagColBox[1][4] == 1 && flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1) {
+                winner = win(colBox[5][4], colBox[1][4], colBox[2][4], colBox[3][4], colBox[4][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box4 == 1 && flagCol2Box4 == 1 && flagCol3Box4 == 1 && flagCol4Box4 == 1) {
-                winner = win(col5Box4, col6Box4, col2Box4, col3Box4, col4Box4)
+            if (flagColBox[6][4] == 1 && flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1) {
+                winner = win(colBox[5][4], colBox[6][4], colBox[2][4], colBox[3][4], colBox[4][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol2Box1 == 1 && flagCol3Box2 == 1 && flagCol4Box3 == 1 && flagCol6Box5 == 1) {
-                winner = win(col5Box4, col2Box1, col3Box2, col4Box3, col6Box5)
+            if (flagColBox[2][1] == 1 && flagColBox[3][2] == 1 && flagColBox[4][3] == 1 && flagColBox[6][5] == 1) {
+                winner = win(colBox[5][4], colBox[2][1], colBox[3][2], colBox[4][3], colBox[6][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box1 == 1 && flagCol5Box2 == 1 && flagCol5Box3 == 1 && flagCol5Box5 == 1) {
-                winner = win(col5Box4, col5Box1, col5Box2, col5Box3, col5Box5)
+            if (flagColBox[5][1] == 1 && flagColBox[5][2] == 1 && flagColBox[5][3] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[5][4], colBox[5][1], colBox[5][2], colBox[5][3], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box6 == 1 && flagCol5Box2 == 1 && flagCol5Box3 == 1 && flagCol5Box5 == 1) {
-                winner = win(col5Box4, col5Box6, col5Box2, col5Box3, col5Box5)
+            if (flagColBox[5][6] == 1 && flagColBox[5][2] == 1 && flagColBox[5][3] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[5][4], colBox[5][6], colBox[5][2], colBox[5][3], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1908,65 +1858,65 @@ col5Box4.addEventListener("click", function (e) {
 
 
 
-col5Box5.addEventListener("click", function (e) {
+colBox[5][5].addEventListener("click", function (e) {
 
 
-    if (flagCol5Box5 === 0) {
+    if (flagColBox[5][5] === 0) {
 
-        print(col5Box5)
+        print(colBox[5][5])
 
 
-        flagCol5Box5 = 1
+        flagColBox[5][5] = 1
 
         tieArray[28] = 1
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box5 == 1 && flagCol2Box5 == 1 && flagCol3Box5 == 1 && flagCol4Box5 == 1 ||
-            flagCol6Box5 == 1 && flagCol2Box5 == 1 && flagCol3Box5 == 1 && flagCol4Box5 == 1 ||
-            flagCol6Box6 == 1 && flagCol4Box4 == 1 && flagCol3Box3 == 1 && flagCol2Box2 == 1 ||
-            flagCol1Box1 == 1 && flagCol2Box2 == 1 && flagCol3Box3 == 1 && flagCol4Box4 == 1 ||
-            flagCol5Box1 == 1 && flagCol5Box2 == 1 && flagCol5Box3 == 1 && flagCol5Box4 == 1 ||
-            flagCol5Box6 == 1 && flagCol5Box2 == 1 && flagCol5Box3 == 1 && flagCol5Box4 == 1) {
+        if (flagColBox[1][5] == 1 && flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 ||
+            flagColBox[6][5] == 1 && flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 ||
+            flagColBox[6][6] == 1 && flagColBox[4][4] == 1 && flagColBox[3][3] == 1 && flagColBox[2][2] == 1 ||
+            flagColBox[1][1] == 1 && flagColBox[2][2] == 1 && flagColBox[3][3] == 1 && flagColBox[4][4] == 1 ||
+            flagColBox[5][1] == 1 && flagColBox[5][2] == 1 && flagColBox[5][3] == 1 && flagColBox[5][4] == 1 ||
+            flagColBox[5][6] == 1 && flagColBox[5][2] == 1 && flagColBox[5][3] == 1 && flagColBox[5][4] == 1) {
 
 
-            if (flagCol1Box5 == 1 && flagCol2Box5 == 1 && flagCol3Box5 == 1 && flagCol4Box5 == 1) {
-                winner = win(col5Box5, col1Box5, col2Box5, col3Box5, col4Box5)
+            if (flagColBox[1][5] == 1 && flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1) {
+                winner = win(colBox[5][5], colBox[1][5], colBox[2][5], colBox[3][5], colBox[4][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box5 == 1 && flagCol2Box5 == 1 && flagCol3Box5 == 1 && flagCol4Box5 == 1) {
-                winner = win(col5Box5, col6Box5, col2Box5, col3Box5, col4Box5)
+            if (flagColBox[6][5] == 1 && flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1) {
+                winner = win(colBox[5][5], colBox[6][5], colBox[2][5], colBox[3][5], colBox[4][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box6 == 1 && flagCol4Box4 == 1 && flagCol3Box3 == 1 && flagCol2Box2 == 1) {
-                winner = win(col5Box5, col6Box6, col4Box4, col3Box3, col2Box2)
+            if (flagColBox[6][6] == 1 && flagColBox[4][4] == 1 && flagColBox[3][3] == 1 && flagColBox[2][2] == 1) {
+                winner = win(colBox[5][5], colBox[6][6], colBox[4][4], colBox[3][3], colBox[2][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box1 == 1 && flagCol2Box2 == 1 && flagCol3Box3 == 1 && flagCol4Box4 == 1) {
-                winner = win(col5Box5, col1Box1, col2Box2, col3Box3, col4Box4)
+            if (flagColBox[1][1] == 1 && flagColBox[2][2] == 1 && flagColBox[3][3] == 1 && flagColBox[4][4] == 1) {
+                winner = win(colBox[5][5], colBox[1][1], colBox[2][2], colBox[3][3], colBox[4][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box1 == 1 && flagCol5Box2 == 1 && flagCol5Box3 == 1 && flagCol5Box4 == 1) {
-                winner = win(col5Box5, col5Box1, col5Box2, col5Box3, col5Box4)
+            if (flagColBox[5][1] == 1 && flagColBox[5][2] == 1 && flagColBox[5][3] == 1 && flagColBox[5][4] == 1) {
+                winner = win(colBox[5][5], colBox[5][1], colBox[5][2], colBox[5][3], colBox[5][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box6 == 1 && flagCol5Box2 == 1 && flagCol5Box3 == 1 && flagCol5Box4 == 1) {
-                winner = win(col5Box5, col5Box6, col5Box2, col5Box3, col5Box4)
+            if (flagColBox[5][6] == 1 && flagColBox[5][2] == 1 && flagColBox[5][3] == 1 && flagColBox[5][4] == 1) {
+                winner = win(colBox[5][5], colBox[5][6], colBox[5][2], colBox[5][3], colBox[5][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -1982,50 +1932,50 @@ col5Box5.addEventListener("click", function (e) {
 
 
 
-col5Box6.addEventListener("click", function (e) {
+colBox[5][6].addEventListener("click", function (e) {
 
 
-    if (flagCol5Box6 === 0) {
+    if (flagColBox[5][6] === 0) {
 
-        print(col5Box6)
+        print(colBox[5][6])
 
 
-        flagCol5Box6 = 1
+        flagColBox[5][6] = 1
 
         tieArray[29] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol1Box6 == 1 && flagCol2Box6 == 1 && flagCol3Box6 == 1 && flagCol4Box6 == 1 ||
-            flagCol6Box6 == 1 && flagCol2Box6 == 1 && flagCol3Box6 == 1 && flagCol4Box6 == 1 ||
-            flagCol1Box2 == 1 && flagCol2Box3 == 1 && flagCol3Box4 == 1 && flagCol4Box5 == 1 ||
-            flagCol5Box2 == 1 && flagCol5Box3 == 1 && flagCol5Box4 == 1 && flagCol5Box5 == 1) {
+        if (flagColBox[1][6] == 1 && flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 ||
+            flagColBox[6][6] == 1 && flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 ||
+            flagColBox[1][2] == 1 && flagColBox[2][3] == 1 && flagColBox[3][4] == 1 && flagColBox[4][5] == 1 ||
+            flagColBox[5][2] == 1 && flagColBox[5][3] == 1 && flagColBox[5][4] == 1 && flagColBox[5][5] == 1) {
 
 
-            if (flagCol1Box6 == 1 && flagCol2Box6 == 1 && flagCol3Box6 == 1 && flagCol4Box6 == 1) {
-                winner = win(col5Box6, col1Box6, col2Box6, col3Box6, col4Box6)
+            if (flagColBox[1][6] == 1 && flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1) {
+                winner = win(colBox[5][6], colBox[1][6], colBox[2][6], colBox[3][6], colBox[4][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box6 == 1 && flagCol2Box6 == 1 && flagCol3Box6 == 1 && flagCol4Box6 == 1) {
-                winner = win(col5Box6, col6Box6, col2Box6, col3Box6, col4Box6)
+            if (flagColBox[6][6] == 1 && flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1) {
+                winner = win(colBox[5][6], colBox[6][6], colBox[2][6], colBox[3][6], colBox[4][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol1Box2 == 1 && flagCol2Box3 == 1 && flagCol3Box4 == 1 && flagCol4Box5 == 1) {
-                winner = win(col5Box6, col1Box2, col2Box3, col3Box4, col4Box5)
+            if (flagColBox[1][2] == 1 && flagColBox[2][3] == 1 && flagColBox[3][4] == 1 && flagColBox[4][5] == 1) {
+                winner = win(colBox[5][6], colBox[1][2], colBox[2][3], colBox[3][4], colBox[4][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box2 == 1 && flagCol5Box3 == 1 && flagCol5Box4 == 1 && flagCol5Box5 == 1) {
-                winner = win(col5Box6, col5Box5, col5Box4, col5Box3, col5Box2)
+            if (flagColBox[5][2] == 1 && flagColBox[5][3] == 1 && flagColBox[5][4] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[5][6], colBox[5][5], colBox[5][4], colBox[5][3], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -2041,40 +1991,40 @@ col5Box6.addEventListener("click", function (e) {
 
 
 
-col6Box1.addEventListener("click", function (e) {
+colBox[6][1].addEventListener("click", function (e) {
 
 
-    if (flagCol6Box1 === 0) {
+    if (flagColBox[6][1] === 0) {
 
-        print(col6Box1)
+        print(colBox[6][1])
 
 
-        flagCol6Box1 = 1
+        flagColBox[6][1] = 1
 
         tieArray[30] = 1
 
         drawMoveTitle(flag)
 
-        if (flagCol2Box1 == 1 && flagCol3Box1 == 1 && flagCol4Box1 == 1 && flagCol5Box1 == 1 ||
-            flagCol5Box2 == 1 && flagCol4Box3 == 1 && flagCol3Box4 == 1 && flagCol2Box5 == 1 ||
-            flagCol6Box2 == 1 && flagCol6Box3 == 1 && flagCol6Box4 == 1 && flagCol6Box5 == 1) {
+        if (flagColBox[2][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1 ||
+            flagColBox[5][2] == 1 && flagColBox[4][3] == 1 && flagColBox[3][4] == 1 && flagColBox[2][5] == 1 ||
+            flagColBox[6][2] == 1 && flagColBox[6][3] == 1 && flagColBox[6][4] == 1 && flagColBox[6][5] == 1) {
 
-            if (flagCol2Box1 == 1 && flagCol3Box1 == 1 && flagCol4Box1 == 1 && flagCol5Box1 == 1) {
-                winner = win(col6Box1, col2Box1, col3Box1, col4Box1, col5Box1)
+            if (flagColBox[2][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1) {
+                winner = win(colBox[6][1], colBox[2][1], colBox[3][1], colBox[4][1], colBox[5][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box2 == 1 && flagCol4Box3 == 1 && flagCol3Box4 == 1 && flagCol2Box5 == 1) {
-                winner = win(col6Box1, col5Box2, col4Box3, col3Box4, col2Box5)
+            if (flagColBox[5][2] == 1 && flagColBox[4][3] == 1 && flagColBox[3][4] == 1 && flagColBox[2][5] == 1) {
+                winner = win(colBox[6][1], colBox[5][2], colBox[4][3], colBox[3][4], colBox[2][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box2 == 1 && flagCol6Box3 == 1 && flagCol6Box4 == 1 && flagCol6Box5 == 1) {
-                winner = win(col6Box1, col6Box2, col6Box3, col6Box4, col6Box5)
+            if (flagColBox[6][2] == 1 && flagColBox[6][3] == 1 && flagColBox[6][4] == 1 && flagColBox[6][5] == 1) {
+                winner = win(colBox[6][1], colBox[6][2], colBox[6][3], colBox[6][4], colBox[6][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -2088,50 +2038,50 @@ col6Box1.addEventListener("click", function (e) {
 })
 
 
-col6Box2.addEventListener("click", function (e) {
+colBox[6][2].addEventListener("click", function (e) {
 
 
-    if (flagCol6Box2 === 0) {
+    if (flagColBox[6][2] === 0) {
 
-        print(col6Box2)
+        print(colBox[6][2])
 
 
-        flagCol6Box2 = 1
+        flagColBox[6][2] = 1
 
         tieArray[31] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol2Box2 == 1 && flagCol3Box2 == 1 && flagCol4Box2 == 1 && flagCol5Box2 == 1 ||
-            flagCol5Box3 == 1 && flagCol4Box4 == 1 && flagCol3Box5 == 1 && flagCol2Box6 == 1 ||
-            flagCol6Box1 == 1 && flagCol6Box3 == 1 && flagCol6Box4 == 1 && flagCol6Box5 == 1 ||
-            flagCol6Box3 == 1 && flagCol6Box6 == 1 && flagCol6Box4 == 1 && flagCol6Box5 == 1) {
+        if (flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[5][3] == 1 && flagColBox[4][4] == 1 && flagColBox[3][5] == 1 && flagColBox[2][6] == 1 ||
+            flagColBox[6][1] == 1 && flagColBox[6][3] == 1 && flagColBox[6][4] == 1 && flagColBox[6][5] == 1 ||
+            flagColBox[6][3] == 1 && flagColBox[6][6] == 1 && flagColBox[6][4] == 1 && flagColBox[6][5] == 1) {
 
 
-            if (flagCol2Box2 == 1 && flagCol3Box2 == 1 && flagCol4Box2 == 1 && flagCol5Box2 == 1) {
-                winner = win(col6Box2, col2Box2, col3Box2, col4Box2, col5Box2)
+            if (flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1) {
+                winner = win(colBox[6][2], colBox[2][2], colBox[3][2], colBox[4][2], colBox[5][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box3 == 1 && flagCol4Box4 == 1 && flagCol3Box5 == 1 && flagCol2Box6 == 1) {
-                winner = win(col6Box2, col5Box3, col4Box4, col3Box5, col2Box6)
+            if (flagColBox[5][3] == 1 && flagColBox[4][4] == 1 && flagColBox[3][5] == 1 && flagColBox[2][6] == 1) {
+                winner = win(colBox[6][2], colBox[5][3], colBox[4][4], colBox[3][5], colBox[2][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box1 == 1 && flagCol6Box3 == 1 && flagCol6Box4 == 1 && flagCol6Box5 == 1) {
-                winner = win(col6Box2, col6Box1, col6Box3, col6Box4, col6Box5)
+            if (flagColBox[6][1] == 1 && flagColBox[6][3] == 1 && flagColBox[6][4] == 1 && flagColBox[6][5] == 1) {
+                winner = win(colBox[6][2], colBox[6][1], colBox[6][3], colBox[6][4], colBox[6][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box3 == 1 && flagCol6Box6 == 1 && flagCol6Box4 == 1 && flagCol6Box5 == 1) {
-                winner = win(col6Box2, col6Box3, col6Box6, col6Box4, col6Box5)
+            if (flagColBox[6][3] == 1 && flagColBox[6][6] == 1 && flagColBox[6][4] == 1 && flagColBox[6][5] == 1) {
+                winner = win(colBox[6][2], colBox[6][3], colBox[6][6], colBox[6][4], colBox[6][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -2146,41 +2096,41 @@ col6Box2.addEventListener("click", function (e) {
 })
 
 
-col6Box3.addEventListener("click", function (e) {
+colBox[6][3].addEventListener("click", function (e) {
 
 
-    if (flagCol6Box3 === 0) {
+    if (flagColBox[6][3] === 0) {
 
-        print(col6Box3)
+        print(colBox[6][3])
 
 
-        flagCol6Box3 = 1
+        flagColBox[6][3] = 1
 
         tieArray[32] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol2Box3 == 1 && flagCol3Box3 == 1 && flagCol4Box3 == 1 && flagCol5Box3 == 1 ||
-            flagCol6Box1 == 1 && flagCol6Box2 == 1 && flagCol6Box4 == 1 && flagCol6Box5 == 1 ||
-            flagCol6Box6 == 1 && flagCol6Box5 == 1 && flagCol6Box4 == 1 && flagCol6Box2 == 1) {
+        if (flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1 ||
+            flagColBox[6][1] == 1 && flagColBox[6][2] == 1 && flagColBox[6][4] == 1 && flagColBox[6][5] == 1 ||
+            flagColBox[6][6] == 1 && flagColBox[6][5] == 1 && flagColBox[6][4] == 1 && flagColBox[6][2] == 1) {
 
-            if (flagCol2Box3 == 1 && flagCol3Box3 == 1 && flagCol4Box3 == 1 && flagCol5Box3 == 1) {
-                winner = win(col6Box3, col2Box3, col3Box3, col4Box3, col5Box3)
+            if (flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1) {
+                winner = win(colBox[6][3], colBox[2][3], colBox[3][3], colBox[4][3], colBox[5][3])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box1 == 1 && flagCol6Box2 == 1 && flagCol6Box4 == 1 && flagCol6Box5 == 1) {
-                winner = win(col6Box3, col6Box1, col6Box2, col6Box4, col6Box5)
+            if (flagColBox[6][1] == 1 && flagColBox[6][2] == 1 && flagColBox[6][4] == 1 && flagColBox[6][5] == 1) {
+                winner = win(colBox[6][3], colBox[6][1], colBox[6][2], colBox[6][4], colBox[6][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box6 == 1 && flagCol6Box5 == 1 && flagCol6Box4 == 1 && flagCol6Box2 == 1) {
-                winner = win(col6Box3, col6Box6, col6Box5, col6Box4, col6Box2)
+            if (flagColBox[6][6] == 1 && flagColBox[6][5] == 1 && flagColBox[6][4] == 1 && flagColBox[6][2] == 1) {
+                winner = win(colBox[6][3], colBox[6][6], colBox[6][5], colBox[6][4], colBox[6][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -2195,41 +2145,41 @@ col6Box3.addEventListener("click", function (e) {
 
 
 
-col6Box4.addEventListener("click", function (e) {
+colBox[6][4].addEventListener("click", function (e) {
 
 
-    if (flagCol6Box4 === 0) {
+    if (flagColBox[6][4] === 0) {
 
-        print(col6Box4)
+        print(colBox[6][4])
 
 
-        flagCol6Box4 = 1
+        flagColBox[6][4] = 1
 
         tieArray[33] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol2Box4 == 1 && flagCol3Box4 == 1 && flagCol4Box4 == 1 && flagCol5Box4 == 1 ||
-            flagCol6Box1 == 1 && flagCol6Box2 == 1 && flagCol6Box3 == 1 && flagCol6Box5 == 1 ||
-            flagCol6Box6 == 1 && flagCol6Box5 == 1 && flagCol6Box3 == 1 && flagCol6Box2 == 1) {
+        if (flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1 ||
+            flagColBox[6][1] == 1 && flagColBox[6][2] == 1 && flagColBox[6][3] == 1 && flagColBox[6][5] == 1 ||
+            flagColBox[6][6] == 1 && flagColBox[6][5] == 1 && flagColBox[6][3] == 1 && flagColBox[6][2] == 1) {
 
-            if (flagCol2Box4 == 1 && flagCol3Box4 == 1 && flagCol4Box4 == 1 && flagCol5Box4 == 1) {
-                winner = win(col6Box4, col2Box4, col3Box4, col4Box4, col5Box4)
+            if (flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1) {
+                winner = win(colBox[6][4], colBox[2][4], colBox[3][4], colBox[4][4], colBox[5][4])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box1 == 1 && flagCol6Box2 == 1 && flagCol6Box3 == 1 && flagCol6Box5 == 1) {
-                winner = win(col6Box4, col6Box1, col6Box2, col6Box3, col6Box5)
+            if (flagColBox[6][1] == 1 && flagColBox[6][2] == 1 && flagColBox[6][3] == 1 && flagColBox[6][5] == 1) {
+                winner = win(colBox[6][4], colBox[6][1], colBox[6][2], colBox[6][3], colBox[6][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box6 == 1 && flagCol6Box5 == 1 && flagCol6Box3 == 1 && flagCol6Box2 == 1) {
-                winner = win(col6Box4, col6Box6, col6Box5, col6Box3, col6Box2)
+            if (flagColBox[6][6] == 1 && flagColBox[6][5] == 1 && flagColBox[6][3] == 1 && flagColBox[6][2] == 1) {
+                winner = win(colBox[6][4], colBox[6][6], colBox[6][5], colBox[6][3], colBox[6][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -2243,42 +2193,42 @@ col6Box4.addEventListener("click", function (e) {
 })
 
 
-col6Box5.addEventListener("click", function (e) {
+colBox[6][5].addEventListener("click", function (e) {
 
 
-    if (flagCol6Box5 === 0) {
+    if (flagColBox[6][5] === 0) {
 
-        print(col6Box5)
+        print(colBox[6][5])
 
 
-        flagCol6Box5 = 1
+        flagColBox[6][5] = 1
 
         tieArray[34] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol2Box5 == 1 && flagCol3Box5 == 1 && flagCol4Box5 == 1 && flagCol5Box5 == 1 ||
-            flagCol5Box4 == 1 && flagCol4Box3 == 1 && flagCol3Box2 == 1 && flagCol2Box1 == 1 ||
-            flagCol6Box6 == 1 && flagCol6Box4 == 1 && flagCol6Box3 == 1 && flagCol6Box2 == 1) {
+        if (flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[5][4] == 1 && flagColBox[4][3] == 1 && flagColBox[3][2] == 1 && flagColBox[2][1] == 1 ||
+            flagColBox[6][6] == 1 && flagColBox[6][4] == 1 && flagColBox[6][3] == 1 && flagColBox[6][2] == 1) {
 
 
-            if (flagCol2Box5 == 1 && flagCol3Box5 == 1 && flagCol4Box5 == 1 && flagCol5Box5 == 1) {
-                winner = win(col6Box5, col2Box5, col3Box5, col4Box5, col5Box5)
+            if (flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1) {
+                winner = win(colBox[6][5], colBox[2][5], colBox[3][5], colBox[4][5], colBox[5][5])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box4 == 1 && flagCol4Box3 == 1 && flagCol3Box2 == 1 && flagCol2Box1 == 1) {
-                winner = win(col6Box5, col5Box4, col4Box3, col3Box2, col2Box1)
+            if (flagColBox[5][4] == 1 && flagColBox[4][3] == 1 && flagColBox[3][2] == 1 && flagColBox[2][1] == 1) {
+                winner = win(colBox[6][5], colBox[5][4], colBox[4][3], colBox[3][2], colBox[2][1])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box6 == 1 && flagCol6Box4 == 1 && flagCol6Box3 == 1 && flagCol6Box2 == 1) {
-                winner = win(col6Box5, col6Box6, col6Box4, col6Box3, col6Box2)
+            if (flagColBox[6][6] == 1 && flagColBox[6][4] == 1 && flagColBox[6][3] == 1 && flagColBox[6][2] == 1) {
+                winner = win(colBox[6][5], colBox[6][6], colBox[6][4], colBox[6][3], colBox[6][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -2292,41 +2242,41 @@ col6Box5.addEventListener("click", function (e) {
 })
 
 
-col6Box6.addEventListener("click", function (e) {
+colBox[6][6].addEventListener("click", function (e) {
 
 
-    if (flagCol6Box6 === 0) {
+    if (flagColBox[6][6] === 0) {
 
-        print(col6Box6)
+        print(colBox[6][6])
 
 
-        flagCol6Box6 = 1
+        flagColBox[6][6] = 1
 
         tieArray[35] = 1
 
 
         drawMoveTitle(flag)
 
-        if (flagCol2Box6 == 1 && flagCol3Box6 == 1 && flagCol4Box6 == 1 && flagCol5Box6 == 1 ||
-            flagCol5Box5 == 1 && flagCol4Box4 == 1 && flagCol3Box3 == 1 && flagCol2Box2 == 1 ||
-            flagCol6Box5 == 1 && flagCol6Box4 == 1 && flagCol6Box3 == 1 && flagCol6Box2 == 1) {
+        if (flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1 ||
+            flagColBox[5][5] == 1 && flagColBox[4][4] == 1 && flagColBox[3][3] == 1 && flagColBox[2][2] == 1 ||
+            flagColBox[6][5] == 1 && flagColBox[6][4] == 1 && flagColBox[6][3] == 1 && flagColBox[6][2] == 1) {
 
-            if (flagCol2Box6 == 1 && flagCol3Box6 == 1 && flagCol4Box6 == 1 && flagCol5Box6 == 1) {
-                winner = win(col6Box6, col2Box6, col3Box6, col4Box6, col5Box6)
+            if (flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1) {
+                winner = win(colBox[6][6], colBox[2][6], colBox[3][6], colBox[4][6], colBox[5][6])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol5Box5 == 1 && flagCol4Box4 == 1 && flagCol3Box3 == 1 && flagCol2Box2 == 1) {
-                winner = win(col6Box6, col5Box5, col4Box4, col3Box3, col2Box2)
+            if (flagColBox[5][5] == 1 && flagColBox[4][4] == 1 && flagColBox[3][3] == 1 && flagColBox[2][2] == 1) {
+                winner = win(colBox[6][6], colBox[5][5], colBox[4][4], colBox[3][3], colBox[2][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
             }
 
-            if (flagCol6Box5 == 1 && flagCol6Box4 == 1 && flagCol6Box3 == 1 && flagCol6Box2 == 1) {
-                winner = win(col6Box6, col6Box5, col6Box4, col6Box3, col6Box2)
+            if (flagColBox[6][5] == 1 && flagColBox[6][4] == 1 && flagColBox[6][3] == 1 && flagColBox[6][2] == 1) {
+                winner = win(colBox[6][6], colBox[6][5], colBox[6][4], colBox[6][3], colBox[6][2])
                 if (winner === true) {
                     pomWinner = winner
                 }
@@ -2350,90 +2300,14 @@ newGame.addEventListener("click", function () {
 
     drawMoveTitle(flag)
 
-    flagCol1Box1 = 0
-    flagCol1Box2 = 0
-    flagCol1Box3 = 0
-    flagCol1Box4 = 0
-    flagCol1Box5 = 0
-    flagCol1Box6 = 0
+    for (let i = 1; i < 7; i++) {
+        for (let j = 1; j < 7; j++) {
+            flagColBox[i][j] = 0;
+            colBox[i][j].innerHTML = ""
+            colBox[i][j].style.backgroundColor = ""
+        }
+    }
 
-    flagCol2Box1 = 0
-    flagCol2Box2 = 0
-    flagCol2Box3 = 0
-    flagCol2Box4 = 0
-    flagCol2Box5 = 0
-    flagCol2Box6 = 0
-
-    flagCol3Box1 = 0
-    flagCol3Box2 = 0
-    flagCol3Box3 = 0
-    flagCol3Box4 = 0
-    flagCol3Box5 = 0
-    flagCol3Box6 = 0
-
-    flagCol4Box1 = 0
-    flagCol4Box2 = 0
-    flagCol4Box3 = 0
-    flagCol4Box4 = 0
-    flagCol4Box5 = 0
-    flagCol4Box6 = 0
-
-    flagCol5Box1 = 0
-    flagCol5Box2 = 0
-    flagCol5Box3 = 0
-    flagCol5Box4 = 0
-    flagCol5Box5 = 0
-    flagCol5Box6 = 0
-
-    flagCol6Box1 = 0
-    flagCol6Box2 = 0
-    flagCol6Box3 = 0
-    flagCol6Box4 = 0
-    flagCol6Box5 = 0
-    flagCol6Box6 = 0
-
-
-    col1Box1.innerHTML = ""
-    col1Box2.innerHTML = ""
-    col1Box3.innerHTML = ""
-    col1Box4.innerHTML = ""
-    col1Box5.innerHTML = ""
-    col1Box6.innerHTML = ""
-
-    col2Box1.innerHTML = ""
-    col2Box2.innerHTML = ""
-    col2Box3.innerHTML = ""
-    col2Box4.innerHTML = ""
-    col2Box5.innerHTML = ""
-    col2Box6.innerHTML = ""
-
-    col3Box1.innerHTML = ""
-    col3Box2.innerHTML = ""
-    col3Box3.innerHTML = ""
-    col3Box4.innerHTML = ""
-    col3Box5.innerHTML = ""
-    col3Box6.innerHTML = ""
-
-    col4Box1.innerHTML = ""
-    col4Box2.innerHTML = ""
-    col4Box3.innerHTML = ""
-    col4Box4.innerHTML = ""
-    col4Box5.innerHTML = ""
-    col4Box6.innerHTML = ""
-
-    col5Box1.innerHTML = ""
-    col5Box2.innerHTML = ""
-    col5Box3.innerHTML = ""
-    col5Box4.innerHTML = ""
-    col5Box5.innerHTML = ""
-    col5Box6.innerHTML = ""
-
-    col6Box1.innerHTML = ""
-    col6Box2.innerHTML = ""
-    col6Box3.innerHTML = ""
-    col6Box4.innerHTML = ""
-    col6Box5.innerHTML = ""
-    col6Box6.innerHTML = ""
 
     tieArray = []
 
@@ -2450,51 +2324,6 @@ newGame.addEventListener("click", function () {
     gameStatus.textContent = ""
     gameStatus.append("On the move:")
     gameStatus.style.fontSize = "18px"
-
-
-
-
-    col1Box1.style.backgroundColor = ""
-    col1Box2.style.backgroundColor = ""
-    col1Box3.style.backgroundColor = ""
-    col1Box4.style.backgroundColor = ""
-    col1Box5.style.backgroundColor = ""
-    col1Box6.style.backgroundColor = ""
-
-    col2Box1.style.backgroundColor = ""
-    col2Box2.style.backgroundColor = ""
-    col2Box3.style.backgroundColor = ""
-    col2Box4.style.backgroundColor = ""
-    col2Box5.style.backgroundColor = ""
-    col2Box6.style.backgroundColor = ""
-
-    col3Box1.style.backgroundColor = ""
-    col3Box2.style.backgroundColor = ""
-    col3Box3.style.backgroundColor = ""
-    col3Box4.style.backgroundColor = ""
-    col3Box5.style.backgroundColor = ""
-    col3Box6.style.backgroundColor = ""
-
-    col4Box1.style.backgroundColor = ""
-    col4Box2.style.backgroundColor = ""
-    col4Box3.style.backgroundColor = ""
-    col4Box4.style.backgroundColor = ""
-    col4Box5.style.backgroundColor = ""
-    col4Box6.style.backgroundColor = ""
-
-    col5Box1.style.backgroundColor = ""
-    col5Box2.style.backgroundColor = ""
-    col5Box3.style.backgroundColor = ""
-    col5Box4.style.backgroundColor = ""
-    col5Box5.style.backgroundColor = ""
-    col5Box6.style.backgroundColor = ""
-
-    col6Box1.style.backgroundColor = ""
-    col6Box2.style.backgroundColor = ""
-    col6Box3.style.backgroundColor = ""
-    col6Box4.style.backgroundColor = ""
-    col6Box5.style.backgroundColor = ""
-    col6Box6.style.backgroundColor = ""
 
 })
 
