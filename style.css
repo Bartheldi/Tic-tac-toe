@@ -29,43 +29,59 @@
   height: 70px;
   margin-top: 50px;
   display: flex;
+  overflow: hidden;
 }
 
 #heading #player-move {
-  width: 40%;
+  width: 300px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#heading #player-score {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 #heading #player-move-text {
+  width: 80%;
   color: green;
   font-weight: bold;
-  padding-left: 50px;
+  padding-left: 10px;
 }
 
 #heading #player-move-variable {
+  width: 20%;
   font-style: italic;
   font-weight: bold;
-  padding-left: 25px;
 }
 
 #heading #player-X-text {
-  display: flex;
+  width: 98%;
   color: blue;
   font-weight: bold;
   font-style: italic;
   font-size: 14px;
-  padding-left: 180px;
+  padding-left: 12%;
   padding-bottom: 10px;
+  display: flex;
+  flex-direction: row;
 }
 
 #heading #player-O-text {
-  display: flex;
+  width: 98%;
   color: red;
   font-weight: bold;
   font-style: italic;
   font-size: 14px;
-  padding-left: 180px;
+  padding-left: 12%;
+  display: flex;
+  flex-direction: row;
 }
 
 #container-game {
@@ -428,11 +444,11 @@
   }
   #heading #player-X-text {
     font-size: 12px;
-    padding-left: 140px;
+    padding-left: 12%;
   }
   #heading #player-O-text {
     font-size: 12px;
-    padding-left: 140px;
+    padding-left: 12%;
   }
   #dashboard {
     width: 500px;
@@ -591,11 +607,11 @@
   }
   #heading #player-X-text {
     font-size: 10px;
-    padding-left: 120px;
+    padding-left: 12%;
   }
   #heading #player-O-text {
     font-size: 10px;
-    padding-left: 120px;
+    padding-left: 12%;
   }
   #dashboard {
     width: 400px;
@@ -754,11 +770,11 @@
   }
   #heading #player-X-text {
     font-size: 10px;
-    padding-left: 45px;
+    padding-left: 12%;
   }
   #heading #player-O-text {
     font-size: 10px;
-    padding-left: 45px;
+    padding-left: 12%;
   }
   #dashboard {
     width: 320px;

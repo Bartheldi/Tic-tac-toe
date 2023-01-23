@@ -113,7 +113,7 @@ function playerWon(player, box1, box2, box3, box4, box5) {
 
     gameStatus.textContent = ""
     gameStatus.append("Wins:")
-    gameStatus.style.fontSize = "40px"
+    gameStatus.style.fontSize = "30px"
 
     box1.style.backgroundColor = "orange"
     box2.style.backgroundColor = "orange"
@@ -126,6 +126,7 @@ function playerWon(player, box1, box2, box3, box4, box5) {
     if (player === "x") {
         onMove.append("X")
 
+
         let pointsX = playerX.innerHTML
 
         pointsX++
@@ -137,6 +138,7 @@ function playerWon(player, box1, box2, box3, box4, box5) {
 
     } else {
         onMove.append("O")
+
 
         let pointsO = playerO.innerHTML
 
