@@ -117,8 +117,6 @@ function playerWon(player, box1, box2, box3, box4, box5) {
 }
 
 
-
-
 /* if the winner is not found, it checks the field and if the field is full of 1, then it is a draw. 
     If a winner has been found sets all flags to 1 - makes the next move impossible.*/
 function checkPossibleTie (winner) {

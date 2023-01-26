@@ -49,12 +49,10 @@ for (let i = 1; i < 7; i++) {
 }
 
 
-
 /* for possible game draw purpose */
 for (i = 0; i < 36; i++) {
     tieArray.push("0")
 }
-
 
 
 // Create one dimensional array
@@ -74,9 +72,6 @@ for (let i = 1; i < 7; i++) {
         colBox[i][j] = colBoxSelect[h++];
     }
 }
-
-
-
 
 
 colBox[1][1].addEventListener("click", function (e) {
@@ -130,14 +125,10 @@ colBox[1][1].addEventListener("click", function (e) {
 
             checkPossibleTie(pomWinner)
 
-
-
         }
 
     }
 })
-
-
 
 
 colBox[1][2].addEventListener("click", function (e) {
@@ -155,7 +146,10 @@ colBox[1][2].addEventListener("click", function (e) {
         drawMoveTitle(flag)
 
 
-        if (flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1 || flagColBox[2][3] == 1 && flagColBox[3][4] == 1 && flagColBox[4][5] == 1 && flagColBox[5][6] == 1 || flagColBox[1][3] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1 && flagColBox[1][6] == 1 || flagColBox[1][1] == 1 && flagColBox[1][3] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1) {
+        if (flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[2][3] == 1 && flagColBox[3][4] == 1 && flagColBox[4][5] == 1 && flagColBox[5][6] == 1 ||
+            flagColBox[1][3] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1 && flagColBox[1][6] == 1 ||
+            flagColBox[1][1] == 1 && flagColBox[1][3] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1) {
 
 
             if (flagColBox[2][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1) {
@@ -191,18 +185,13 @@ colBox[1][2].addEventListener("click", function (e) {
                 }
             }
 
-
-
             checkPossibleTie(pomWinner)
-
 
         }
 
     }
 
 })
-
-
 
 
 colBox[1][3].addEventListener("click", function (e) {
@@ -219,7 +208,9 @@ colBox[1][3].addEventListener("click", function (e) {
 
         drawMoveTitle(flag)
 
-        if (flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1 || flagColBox[1][1] == 1 && flagColBox[1][2] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1 || flagColBox[1][6] == 1 && flagColBox[1][2] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1) {
+        if (flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1 ||
+            flagColBox[1][1] == 1 && flagColBox[1][2] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1 ||
+            flagColBox[1][6] == 1 && flagColBox[1][2] == 1 && flagColBox[1][4] == 1 && flagColBox[1][5] == 1) {
 
             if (flagColBox[2][3] == 1 && flagColBox[3][3] == 1 && flagColBox[4][3] == 1 && flagColBox[5][3] == 1) {
                 winner = win(colBox[1][3], colBox[2][3], colBox[3][3], colBox[4][3], colBox[5][3])
@@ -242,14 +233,12 @@ colBox[1][3].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
 
     }
 })
-
 
 
 colBox[1][4].addEventListener("click", function (e) {
@@ -268,7 +257,9 @@ colBox[1][4].addEventListener("click", function (e) {
 
         drawMoveTitle(flag)
 
-        if (flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1 || flagColBox[1][1] == 1 && flagColBox[1][2] == 1 && flagColBox[1][3] == 1 && flagColBox[1][5] == 1 || flagColBox[1][6] == 1 && flagColBox[1][5] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1) {
+        if (flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1 ||
+            flagColBox[1][1] == 1 && flagColBox[1][2] == 1 && flagColBox[1][3] == 1 && flagColBox[1][5] == 1 ||
+            flagColBox[1][6] == 1 && flagColBox[1][5] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1) {
 
             if (flagColBox[2][4] == 1 && flagColBox[3][4] == 1 && flagColBox[4][4] == 1 && flagColBox[5][4] == 1) {
                 winner = win(colBox[1][4], colBox[2][4], colBox[3][4], colBox[4][4], colBox[5][4])
@@ -298,8 +289,6 @@ colBox[1][4].addEventListener("click", function (e) {
 })
 
 
-
-
 colBox[1][5].addEventListener("click", function (e) {
 
 
@@ -314,7 +303,10 @@ colBox[1][5].addEventListener("click", function (e) {
 
         drawMoveTitle(flag)
 
-        if (flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1 || flagColBox[2][4] == 1 && flagColBox[3][3] == 1 && flagColBox[4][2] == 1 && flagColBox[5][1] == 1 || flagColBox[1][6] == 1 && flagColBox[1][4] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1 || flagColBox[1][4] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1 && flagColBox[1][1] == 1) {
+        if (flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[2][4] == 1 && flagColBox[3][3] == 1 && flagColBox[4][2] == 1 && flagColBox[5][1] == 1 ||
+            flagColBox[1][6] == 1 && flagColBox[1][4] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1 ||
+            flagColBox[1][4] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1 && flagColBox[1][1] == 1) {
 
             if (flagColBox[2][5] == 1 && flagColBox[3][5] == 1 && flagColBox[4][5] == 1 && flagColBox[5][5] == 1) {
                 winner = win(colBox[1][5], colBox[2][5], colBox[3][5], colBox[4][5], colBox[5][5])
@@ -344,15 +336,12 @@ colBox[1][5].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
 
     }
 })
-
-
 
 
 colBox[1][6].addEventListener("click", function (e) {
@@ -370,7 +359,9 @@ colBox[1][6].addEventListener("click", function (e) {
 
         drawMoveTitle(flag)
 
-        if (flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1 || flagColBox[2][5] == 1 && flagColBox[3][4] == 1 && flagColBox[4][3] == 1 && flagColBox[5][2] == 1 || flagColBox[1][5] == 1 && flagColBox[1][4] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1) {
+        if (flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1 ||
+            flagColBox[2][5] == 1 && flagColBox[3][4] == 1 && flagColBox[4][3] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[1][5] == 1 && flagColBox[1][4] == 1 && flagColBox[1][3] == 1 && flagColBox[1][2] == 1) {
 
             if (flagColBox[2][6] == 1 && flagColBox[3][6] == 1 && flagColBox[4][6] == 1 && flagColBox[5][6] == 1) {
                 winner = win(colBox[1][6], colBox[2][6], colBox[3][6], colBox[4][6], colBox[5][6])
@@ -400,15 +391,6 @@ colBox[1][6].addEventListener("click", function (e) {
 })
 
 
-
-
-
-
-
-
-
-
-
 colBox[2][1].addEventListener("click", function (e) {
 
 
@@ -424,7 +406,10 @@ colBox[2][1].addEventListener("click", function (e) {
 
         drawMoveTitle(flag)
 
-        if (flagColBox[1][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1 || flagColBox[6][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1 || flagColBox[3][2] == 1 && flagColBox[4][3] == 1 && flagColBox[5][4] == 1 && flagColBox[6][5] == 1 || flagColBox[2][2] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1) {
+        if (flagColBox[1][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1 ||
+            flagColBox[6][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1 ||
+            flagColBox[3][2] == 1 && flagColBox[4][3] == 1 && flagColBox[5][4] == 1 && flagColBox[6][5] == 1 ||
+            flagColBox[2][2] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1) {
 
             if (flagColBox[1][1] == 1 && flagColBox[3][1] == 1 && flagColBox[4][1] == 1 && flagColBox[5][1] == 1) {
                 winner = win(colBox[2][1], colBox[1][1], colBox[3][1], colBox[4][1], colBox[5][1])
@@ -461,7 +446,6 @@ colBox[2][1].addEventListener("click", function (e) {
 })
 
 
-
 colBox[2][2].addEventListener("click", function (e) {
 
 
@@ -476,7 +460,12 @@ colBox[2][2].addEventListener("click", function (e) {
 
         drawMoveTitle(flag)
 
-        if (flagColBox[1][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1 || flagColBox[6][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1 || flagColBox[1][1] == 1 && flagColBox[3][3] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1 || flagColBox[6][6] == 1 && flagColBox[3][3] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1 || flagColBox[2][1] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1 || flagColBox[2][6] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1) {
+        if (flagColBox[1][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[6][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1 ||
+            flagColBox[1][1] == 1 && flagColBox[3][3] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[6][6] == 1 && flagColBox[3][3] == 1 && flagColBox[4][4] == 1 && flagColBox[5][5] == 1 ||
+            flagColBox[2][1] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1 ||
+            flagColBox[2][6] == 1 && flagColBox[2][3] == 1 && flagColBox[2][4] == 1 && flagColBox[2][5] == 1) {
 
 
             if (flagColBox[1][2] == 1 && flagColBox[3][2] == 1 && flagColBox[4][2] == 1 && flagColBox[5][2] == 1) {
@@ -529,9 +518,7 @@ colBox[2][2].addEventListener("click", function (e) {
 
             }
 
-
             checkPossibleTie(pomWinner)
-
 
         }
     }
@@ -735,7 +722,6 @@ colBox[2][5].addEventListener("click", function (e) {
 })
 
 
-
 colBox[2][6].addEventListener("click", function (e) {
 
 
@@ -786,18 +772,12 @@ colBox[2][6].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
 
     }
 })
-
-
-
-
-
 
 
 colBox[3][1].addEventListener("click", function (e) {
@@ -839,17 +819,12 @@ colBox[3][1].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
-
 
         }
 
     }
 })
-
-
-
 
 
 colBox[3][2].addEventListener("click", function (e) {
@@ -907,13 +882,11 @@ colBox[3][2].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
         }
 
     }
 })
-
 
 
 colBox[3][3].addEventListener("click", function (e) {
@@ -995,8 +968,6 @@ colBox[3][3].addEventListener("click", function (e) {
 })
 
 
-
-
 colBox[3][4].addEventListener("click", function (e) {
 
 
@@ -1069,13 +1040,11 @@ colBox[3][4].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
     }
 })
-
 
 
 colBox[3][5].addEventListener("click", function (e) {
@@ -1134,15 +1103,12 @@ colBox[3][5].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
 
     }
 })
-
-
 
 
 colBox[3][6].addEventListener("click", function (e) {
@@ -1185,15 +1151,11 @@ colBox[3][6].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
     }
 })
-
-
-
 
 
 colBox[4][1].addEventListener("click", function (e) {
@@ -1236,15 +1198,12 @@ colBox[4][1].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
 
     }
 })
-
-
 
 
 colBox[4][2].addEventListener("click", function (e) {
@@ -1303,13 +1262,11 @@ colBox[4][2].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
     }
 })
-
 
 
 colBox[4][3].addEventListener("click", function (e) {
@@ -1393,7 +1350,6 @@ colBox[4][3].addEventListener("click", function (e) {
 })
 
 
-
 colBox[4][4].addEventListener("click", function (e) {
 
 
@@ -1465,15 +1421,12 @@ colBox[4][4].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
-
 
         }
 
     }
 })
-
 
 
 colBox[4][5].addEventListener("click", function (e) {
@@ -1532,14 +1485,12 @@ colBox[4][5].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
 
     }
 })
-
 
 
 colBox[4][6].addEventListener("click", function (e) {
@@ -1581,18 +1532,12 @@ colBox[4][6].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
 
     }
 })
-
-
-
-
-
 
 
 colBox[5][1].addEventListener("click", function (e) {
@@ -1644,13 +1589,11 @@ colBox[5][1].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
     }
 })
-
 
 
 colBox[5][2].addEventListener("click", function (e) {
@@ -1724,7 +1667,6 @@ colBox[5][2].addEventListener("click", function (e) {
 })
 
 
-
 colBox[5][3].addEventListener("click", function (e) {
 
 
@@ -1782,14 +1724,12 @@ colBox[5][3].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
 
     }
 })
-
 
 
 colBox[5][4].addEventListener("click", function (e) {
@@ -1848,14 +1788,12 @@ colBox[5][4].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
 
     }
 })
-
 
 
 colBox[5][5].addEventListener("click", function (e) {
@@ -1922,14 +1860,12 @@ colBox[5][5].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
 
     }
 })
-
 
 
 colBox[5][6].addEventListener("click", function (e) {
@@ -1981,14 +1917,11 @@ colBox[5][6].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
     }
 })
-
-
 
 
 colBox[6][1].addEventListener("click", function (e) {
@@ -2029,7 +1962,6 @@ colBox[6][1].addEventListener("click", function (e) {
                     pomWinner = winner
                 }
             }
-
 
             checkPossibleTie(pomWinner)
         }
@@ -2087,7 +2019,6 @@ colBox[6][2].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
@@ -2136,13 +2067,11 @@ colBox[6][3].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
     }
 })
-
 
 
 colBox[6][4].addEventListener("click", function (e) {
@@ -2184,7 +2113,6 @@ colBox[6][4].addEventListener("click", function (e) {
                     pomWinner = winner
                 }
             }
-
 
             checkPossibleTie(pomWinner)
 
@@ -2234,7 +2162,6 @@ colBox[6][5].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
@@ -2282,7 +2209,6 @@ colBox[6][6].addEventListener("click", function (e) {
                 }
             }
 
-
             checkPossibleTie(pomWinner)
 
         }
@@ -2290,9 +2216,7 @@ colBox[6][6].addEventListener("click", function (e) {
 })
 
 
-
 newGame.addEventListener("click", function () {
-
 
     flag = 0
     winner = false
@@ -2308,13 +2232,11 @@ newGame.addEventListener("click", function () {
         }
     }
 
-
     tieArray = []
 
     for (i = 0; i < 36; i++) {
         tieArray.push("0")
     }
-
 
     onMove.textContent = ""
     onMove.append("X")
